@@ -4,7 +4,7 @@
 import '../styles/globals.css'
 import PropTypes from 'prop-types';
 import PageHead from '../components/PageHead'
-import { CookiesProvider } from 'react-cookie';
+import { CookiesProvider } from 'react-cookie'
 import * as React from 'react'
 
 export default function App({Component, pageProps}) {

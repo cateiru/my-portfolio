@@ -1,7 +1,6 @@
 import Header from './Header'
 import Footer from './Footer'
 import * as React from 'react'
-import { Theme }  from './DarkMode'
 
 interface Props {
   titleName: string

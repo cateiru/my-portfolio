@@ -16,7 +16,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { useCookies } from 'react-cookie'
-
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -35,11 +35,10 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 function ElevationScroll(props: {children: React.ReactElement}) {
-  const { children } = props;
   const trigger = useScrollTrigger()
 
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
+  return React.cloneElement(props.children, {
+    elevation: trigger ? 4 : 0
   })
 }
 
@@ -66,20 +65,37 @@ function ScrollTop(props: {children: React.ReactElement}) {
   );
 }
 
+function changeTheme(theme: 'dark' | 'light' | undefined, prefersDarkMode: boolean): string {
+  theme = themeSelect(theme, prefersDarkMode)
+  if(theme === 'light'){
+    return 'dark'
+  }
+  return 'light'
+}
+
+function themeSelect(theme: 'dark' | 'light' | undefined, prefersDarkMode: boolean){
+  if(typeof theme === 'undefined'){
+    return prefersDarkMode ? 'dark' : 'light'
+  }
+  return theme
+}
 
 function ElevateAppBar(props: {titleName: string}) {
   const classes = useStyles()
   const [cookies, setCookie, removeCookie] = useCookies(['isDark'])
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+
+  setCookie('isDark', themeSelect(cookies.isDark, prefersDarkMode))
 
   const theme = React.useMemo(
     () =>
       createMuiTheme({
         palette: {
-          type: (cookies.isDark === 'true') ? 'dark' : 'light',
+          type: themeSelect(cookies.isDark, prefersDarkMode),
         },
       }),
     [cookies.isDark],
-  );
+  )
 
   return (
     <React.Fragment>
@@ -95,8 +111,8 @@ function ElevateAppBar(props: {titleName: string}) {
             <Typography variant="h6" className={classes.title}>
               {props.titleName}
             </Typography>
-            <IconButton onClick={() => (setCookie('isDark', !(cookies.isDark === 'true'), { path: '/' }))}>
-              {(cookies.isDark === 'true')? (<Brightness7Icon />) : (<Brightness4Icon />)}
+            <IconButton onClick={() => (setCookie('isDark', changeTheme(cookies.isDark, prefersDarkMode), { path: '/' , sameSite: 'strict'}))}>
+              {(cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
             </IconButton>
           </Toolbar>
         </AppBar>
