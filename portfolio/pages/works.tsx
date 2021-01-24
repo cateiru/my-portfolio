@@ -1,10 +1,10 @@
 import Page from '../components/Page'
 
-export default function About() {
+export default function Works() {
   return (
     <div>
-      <Page titleName="About">
-        About
+      <Page titleName="Works">
+        works
       </Page>
     </div>
   )
