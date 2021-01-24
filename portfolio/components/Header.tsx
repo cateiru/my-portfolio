@@ -65,19 +65,11 @@ function ScrollTop(props: {children: React.ReactElement}) {
   );
 }
 
-function changeTheme(theme: 'dark' | 'light' | undefined, prefersDarkMode: boolean): string {
-  theme = themeSelect(theme, prefersDarkMode)
+function changeTheme(theme: 'dark' | 'light' | undefined): string {
   if(theme === 'light'){
     return 'dark'
   }
   return 'light'
-}
-
-function themeSelect(theme: 'dark' | 'light' | undefined, prefersDarkMode: boolean){
-  if(typeof theme === 'undefined'){
-    return prefersDarkMode ? 'dark' : 'light'
-  }
-  return theme
 }
 
 function ElevateAppBar(props: {titleName: string}) {
@@ -85,13 +77,16 @@ function ElevateAppBar(props: {titleName: string}) {
   const [cookies, setCookie, removeCookie] = useCookies(['isDark'])
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
-  setCookie('isDark', themeSelect(cookies.isDark, prefersDarkMode))
+  if(typeof cookies.isDark === 'undefined'){
+    const defaultTheme = prefersDarkMode ? 'dark' : 'light'
+    setCookie('isDark', defaultTheme, { path: '/' , sameSite: 'strict' })
+  }
 
   const theme = React.useMemo(
     () =>
       createMuiTheme({
         palette: {
-          type: themeSelect(cookies.isDark, prefersDarkMode),
+          type: cookies.isDark,
         },
       }),
     [cookies.isDark],
@@ -111,7 +106,7 @@ function ElevateAppBar(props: {titleName: string}) {
             <Typography variant="h6" className={classes.title}>
               {props.titleName}
             </Typography>
-            <IconButton onClick={() => (setCookie('isDark', changeTheme(cookies.isDark, prefersDarkMode), { path: '/' , sameSite: 'strict'}))}>
+            <IconButton color="inherit" onClick={() => (setCookie('isDark', changeTheme(cookies.isDark), { path: '/' , sameSite: 'strict'}))}>
               {(cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
             </IconButton>
           </Toolbar>
