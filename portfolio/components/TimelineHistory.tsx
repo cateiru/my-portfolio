@@ -15,6 +15,7 @@ import SchoolIcon from '@material-ui/icons/School'
 import ApartmentIcon from '@material-ui/icons/Apartment'
 import FastfoodIcon from '@material-ui/icons/Fastfood'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { Height } from '@material-ui/icons'
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -25,8 +26,12 @@ const styles = (theme: Theme) =>
     },
     timeline: {
       marginTop: '10rem',
-      marginBottom: '5rem'
-    }
+      marginBottom: '5rem',
+      width: '100%',
+    },
+    text: {
+      fontSize: '1rem',
+    },
   })
 
 interface Props extends WithStyles<typeof styles> { }
@@ -48,20 +53,20 @@ class TimelineHistory extends React.Component<Props, {}> {
     <Timeline align="alternate" className={classes.timeline}>
       <TimelineItem>
         <TimelineOppositeContent>
-          <Typography color="textSecondary">2000/10/01</Typography>
+          <Typography color="textSecondary" className={classes.text}>2000/10/01</Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot variant="outlined" >
+          <TimelineDot variant="outlined">
             <CakeIcon />
           </TimelineDot>
           <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent>生まれる</TimelineContent>
+        </TimelineSeparator >
+        <TimelineContent className={classes.text}>生まれる</TimelineContent>
       </TimelineItem>
 
       <TimelineItem>
         <TimelineOppositeContent>
-          <Typography color="textSecondary">2017/07 - 2019/02</Typography>
+          <Typography color="textSecondary" className={classes.text}>2017/07 - 2019/02</Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot variant="outlined" >
@@ -69,12 +74,12 @@ class TimelineHistory extends React.Component<Props, {}> {
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent><Box><span className={classes.emphasis}>すき家</span>にてアルバイト</Box></TimelineContent>
+        <TimelineContent className={classes.text}><Box><span className={classes.emphasis}>すき家</span>にてアルバイト</Box></TimelineContent>
       </TimelineItem>
 
       <TimelineItem>
         <TimelineOppositeContent>
-          <Typography color="textSecondary">2019/04/01 - (2023/04)</Typography>
+          <Typography color="textSecondary" className={classes.text}>2019/04/01 - (2023/04)</Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot variant="outlined" >
@@ -82,12 +87,12 @@ class TimelineHistory extends React.Component<Props, {}> {
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent><span className={classes.emphasis}>東京電機大学</span> 入学</TimelineContent>
+        <TimelineContent className={classes.text}><span className={classes.emphasis}>東京電機大学</span> 入学</TimelineContent>
       </TimelineItem>
 
       <TimelineItem>
         <TimelineOppositeContent>
-          <Typography color="textSecondary">2019/07 - </Typography>
+          <Typography color="textSecondary" className={classes.text}>2019/07 - </Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot variant="outlined" >
@@ -95,12 +100,12 @@ class TimelineHistory extends React.Component<Props, {}> {
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator>
-        <TimelineContent><span className={classes.emphasis}>都内AI企業</span>にてインターン</TimelineContent>
+        <TimelineContent className={classes.text}><span className={classes.emphasis}>都内AI企業</span>にてインターン</TimelineContent>
       </TimelineItem>
 
       <TimelineItem>
         <TimelineOppositeContent>
-            <Typography color="textSecondary">いつか</Typography>
+            <Typography color="textSecondary" className={classes.text}>いつか</Typography>
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot variant="outlined" >
@@ -108,7 +113,7 @@ class TimelineHistory extends React.Component<Props, {}> {
           </TimelineDot>
           {/* <TimelineConnector /> */}
         </TimelineSeparator>
-        <TimelineContent><span className={classes.emphasis}>つよつよになる！</span></TimelineContent>
+        <TimelineContent className={classes.text}><span className={classes.emphasis}>つよつよになる！</span></TimelineContent>
       </TimelineItem>
     </Timeline>
     )

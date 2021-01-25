@@ -32,11 +32,17 @@ const buttonTheme = (theme: Theme) => (createStyles({
   jump: {
     flexGrow: 1,
     marginBottom: '10rem',
+    width: '90%',
+    maxWidth: '90%',
+    margin: '0 auto'
   },
   button: {
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+  },
+  item: {
+    textAlign: 'center',
   }
 }))
 
@@ -45,8 +51,8 @@ interface Props extends WithStyles<typeof buttonTheme> {}
 const jumpButton: React.FC<Props> = ({ classes }: Props) => (
     <div className={classes.jump}>
       <Center>
-        <Grid container spacing={4}>
-          <Grid item xs>
+        <Grid container spacing={5} >
+          <Grid item xs className={classes.item}>
             <NextLink href="/works">
               <Button variant="outlined" className={classes.button}>
                 WORKS
@@ -54,7 +60,7 @@ const jumpButton: React.FC<Props> = ({ classes }: Props) => (
             </NextLink>
           </Grid>
 
-          <Grid item xs>
+          <Grid item xs className={classes.item}>
             <NextLink href="/skills">
               <Button variant="outlined" className={classes.button}>
                 SKILLS
@@ -62,7 +68,7 @@ const jumpButton: React.FC<Props> = ({ classes }: Props) => (
             </NextLink>
           </Grid>
 
-          <Grid item xs>
+          <Grid item xs className={classes.item}>
             <NextLink href="/links">
               <Button variant="outlined" className={classes.button}>
                 LINKS
@@ -70,7 +76,7 @@ const jumpButton: React.FC<Props> = ({ classes }: Props) => (
             </NextLink>
           </Grid>
 
-          <Grid item xs>
+          <Grid item xs className={classes.item}>
             <NextLink href="/contact">
               <Button variant="outlined" className={classes.button}>
                 CONTACT
