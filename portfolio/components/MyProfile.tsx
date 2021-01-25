@@ -2,16 +2,18 @@ import React from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles'
 import Center from './Center'
+import {useClient} from './CheckClient'
 
 
 interface State {
-  changeAvatar: boolean
+  changeAvatar: boolean,
+  isClient: boolean
 }
 
 const styles = (theme: Theme) =>
   createStyles({
   icon: {
-    marginTop: '7rem',
+    marginTop: '10rem',
     marginBottom: '1rem',
     width: theme.spacing(13),
     height: theme.spacing(13),
@@ -27,7 +29,8 @@ class MyAvatar extends React.Component<Props, State> {
     super(props)
 
     this.state = {
-      changeAvatar: Boolean(Math.round(Math.random()))
+      changeAvatar: Boolean(Math.round(Math.random())),
+      isClient: false
     }
 
     this.avatarChange = this.avatarChange.bind(this)
@@ -39,12 +42,20 @@ class MyAvatar extends React.Component<Props, State> {
     }))
   }
 
+  componentDidMount() {
+    if(typeof window !== 'undefined'){
+      this.setState(() => ({
+        isClient: true
+      }))
+    }
+  }
+
   render() {
     const { classes } = this.props
 
     return (
     <Center>
-      <Avatar alt="Yuto Watanabe" src={this.state.changeAvatar ? "/myIcon1.png" : "/myIcon2.png"} onClick={this.avatarChange} className={classes.icon} />
+      <Avatar alt="Yuto Watanabe" src={this.state.isClient ? this.state.changeAvatar ? "/myIcon1.png" : "/myIcon2.png" : null} onClick={this.avatarChange} className={classes.icon} />
     </Center>
     )
   }

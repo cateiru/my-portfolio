@@ -1,19 +1,88 @@
 import Page from '../components/Page'
 import MyAvatar from '../components/MyProfile'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { makeStyles, Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
+import TimelineHistory from '../components/TimelineHistory'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
 import Center from '../components/Center'
+import NextLink from 'next/link'
+import Divider from '@material-ui/core/Divider'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     name: {
-      fontFamily: "'M PLUS 1p', sans-serif"
+      fontFamily: "'M PLUS 1p', sans-serif",
+      fontWeight: 100,
+      textAlign: 'center',
     },
     nameEn: {
-      fontFamily: "'Open Sans Condensed', sans-serif"
+      fontFamily: "'Open Sans Condensed', sans-serif",
+      textAlign: 'center',
+      marginBottom: '3rem'
+    },
+    divider: {
+      width: '80%'
     }
   }),
 )
+
+
+const buttonTheme = (theme: Theme) => (createStyles({
+  jump: {
+    flexGrow: 1,
+    marginBottom: '10rem',
+  },
+  button: {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }
+}))
+
+interface Props extends WithStyles<typeof buttonTheme> {}
+
+const jumpButton: React.FC<Props> = ({ classes }: Props) => (
+    <div className={classes.jump}>
+      <Center>
+        <Grid container spacing={4}>
+          <Grid item xs>
+            <NextLink href="/works">
+              <Button variant="outlined" className={classes.button}>
+                WORKS
+              </Button>
+            </NextLink>
+          </Grid>
+
+          <Grid item xs>
+            <NextLink href="/skills">
+              <Button variant="outlined" className={classes.button}>
+                SKILLS
+              </Button>
+            </NextLink>
+          </Grid>
+
+          <Grid item xs>
+            <NextLink href="/links">
+              <Button variant="outlined" className={classes.button}>
+                LINKS
+              </Button>
+            </NextLink>
+          </Grid>
+
+          <Grid item xs>
+            <NextLink href="/contact">
+              <Button variant="outlined" className={classes.button}>
+                CONTACT
+              </Button>
+            </NextLink>
+          </Grid>
+        </Grid>
+      </Center>
+    </div>
+  )
+
+const CustomButton = withStyles(buttonTheme)(jumpButton)
 
 export default function About() {
   const classes = useStyles()
@@ -22,16 +91,17 @@ export default function About() {
     <div>
       <Page titleName="About" >
         <MyAvatar />
-        <Center>
           <Box fontSize="h3.fontSize" className={classes.name}>
             渡邊悠人
           </Box>
-        </Center>
-        <Center>
           <Box fontSize="h6.fontSize" className={classes.nameEn}>
             Yuto Watanabe
           </Box>
-        </Center>
+          <CustomButton />
+          <Center className={classes.divider}>
+            <Divider />
+          </Center>
+          <TimelineHistory />
       </Page>
     </div>
   )

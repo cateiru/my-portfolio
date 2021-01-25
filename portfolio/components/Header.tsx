@@ -27,6 +27,8 @@ import ShareIcon from '@material-ui/icons/Share'
 import Box from '@material-ui/core/Box'
 import selectTheme from './Theme'
 import Grid from '@material-ui/core/Grid'
+import {useClient} from './CheckClient'
+import ContactMailIcon from '@material-ui/icons/ContactMail';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -34,7 +36,9 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
       paddingLeft: '2rem',
-      fontSize: '1.7rem'
+      fontSize: '1.7rem',
+      fontWeight: 300,
+      fontFamily: "'M PLUS 1p', sans-serif",
     },
     scrollTop: {
       position: 'fixed',
@@ -43,7 +47,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     list: {
       width: 250,
+      fontFamily: "'M PLUS 1p', sans-serif",
+      fontWeight: 300
     },
+    listText: {
+      fontFamily: "'M PLUS 1p', sans-serif",
+      fontWeight: 400,
+    }
   })
 )
 
@@ -87,8 +97,8 @@ function changeTheme(theme: 'dark' | 'light' | undefined): string {
 
 function menuList(nowIndex: number) {
   const classes = useStyles()
-  const linkItem = ['', 'works', 'skills', 'links']
-  const linkIcons = [<HomeIcon />, <WorkIcon />, <AccountCircleIcon />, <ShareIcon />]
+  const linkItem = ['', 'works', 'skills', 'links', 'contact']
+  const linkIcons = [<HomeIcon />, <WorkIcon />, <AccountCircleIcon />, <ShareIcon />, <ContactMailIcon />]
   return (
     <div className={classes.list}>
       <Grid container alignItems="center" justify="center">
@@ -99,11 +109,11 @@ function menuList(nowIndex: number) {
         </Grid>
       </Grid>
       <List>
-        {['ABOUT', 'WORKS', 'SKILLS', 'LINKS'].map((text, index) => (
+        {['ABOUT', 'WORKS', 'SKILLS', 'LINKS', 'CONTACT'].map((text, index) => (
           <NextLink href={`/${linkItem[index]}`} key={text}>
             <ListItem button key={text} selected={nowIndex === index}>
               <ListItemIcon>{linkIcons[index]}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={<Typography className={classes.listText} >{text}</Typography>} />
             </ListItem>
           </NextLink>
         ))}
@@ -133,6 +143,7 @@ function ElevateAppBar(props: {titleName: string}) {
   }
 
   const theme = selectTheme(cookies.isDark)
+  const isClient = useClient()
 
   return (
     <React.Fragment>
@@ -146,7 +157,7 @@ function ElevateAppBar(props: {titleName: string}) {
                 {props.titleName}
               </Typography>
             <IconButton onClick={() => (setCookie('isDark', changeTheme(cookies.isDark), { path: '/' , sameSite: 'strict'}))}>
-              {(cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
+              {isClient ? (cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />) : null}
             </IconButton>
           </Toolbar>
         </AppBar>

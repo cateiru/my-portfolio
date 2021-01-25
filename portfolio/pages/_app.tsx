@@ -1,7 +1,7 @@
 /**
  * this code from material-ui sample code page 'https://github.com/mui-org/material-ui/tree/master/examples/nextjs
  */
-import '../styles/globals.css'
+// import '../styles/globals.css'
 import PropTypes from 'prop-types';
 import PageHead from '../components/PageHead'
 import { CookiesProvider } from 'react-cookie'

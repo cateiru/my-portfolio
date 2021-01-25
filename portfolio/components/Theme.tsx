@@ -25,6 +25,9 @@ function lightTheme(): Theme {
         default: grey[50],
         paper: grey[50],
       },
+      text: {
+        secondary: '#d1d1d1'
+      }
     },
     typography: {
       fontFamily: "'Noto Sans JP', sans-serif",
@@ -38,6 +41,7 @@ function darkTheme(): Theme {
       type: "dark",
       primary: {
         main: grey[800],
+        contrastText: '#fff'
       },
       secondary: {
         main: deepOrange[900],
@@ -46,6 +50,9 @@ function darkTheme(): Theme {
         default: grey[900],
         paper: grey[900],
       },
+      text: {
+        secondary: '#737373'
+      }
     },
     typography: {
       fontFamily: "'Noto Sans JP', sans-serif",

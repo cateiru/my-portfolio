@@ -8,7 +8,9 @@ const useStyles = makeStyles((theme: Theme) =>
     copyright: {
       fontFamily: "'Open Sans Condensed', sans-serif",
       fontSize: 12,
-    }
+      textAlign: 'right',
+      margin: '1rem .5rem .5rem .5rem'
+    },
   }),
 )
 
@@ -16,11 +18,9 @@ export default function Footer() {
   const classes = useStyles()
   return (
     <footer>
-      <Center>
-        <Box className={classes.copyright}>
-          Copyright (c) 2021 Yuto Watanabe
-        </Box>
-      </Center>
+      <Box className={classes.copyright}>
+        Copyright (c) 2021 Yuto Watanabe
+      </Box>
     </footer>
   )
 }
