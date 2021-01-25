@@ -8,13 +8,11 @@ import Typography from '@material-ui/core/Typography'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import Fab from '@material-ui/core/Fab'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import Zoom from '@material-ui/core/Zoom'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import { useCookies } from 'react-cookie'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
@@ -26,6 +24,9 @@ import HomeIcon from '@material-ui/icons/Home'
 import WorkIcon from '@material-ui/icons/Work'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ShareIcon from '@material-ui/icons/Share'
+import Box from '@material-ui/core/Box'
+import selectTheme from './Theme'
+import Grid from '@material-ui/core/Grid'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -90,8 +91,15 @@ function menuList(nowIndex: number) {
   const linkIcons = [<HomeIcon />, <WorkIcon />, <AccountCircleIcon />, <ShareIcon />]
   return (
     <div className={classes.list}>
+      <Grid container alignItems="center" justify="center">
+        <Grid item>
+          <Box fontSize="h5.fontSize">
+            MENU
+          </Box>
+        </Grid>
+      </Grid>
       <List>
-        {['あばうと', 'わーくす', 'すきるず', 'りんく'].map((text, index) => (
+        {['ABOUT', 'WORKS', 'SKILLS', 'LINKS'].map((text, index) => (
           <NextLink href={`/${linkItem[index]}`} key={text}>
             <ListItem button key={text} selected={nowIndex === index}>
               <ListItemIcon>{linkIcons[index]}</ListItemIcon>
@@ -124,32 +132,20 @@ function ElevateAppBar(props: {titleName: string}) {
     setCookie('isDark', defaultTheme, { path: '/' , sameSite: 'strict' })
   }
 
-  const theme = React.useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          type: cookies.isDark,
-        },
-      }),
-    [cookies.isDark],
-  )
+  const theme = selectTheme(cookies.isDark)
 
   return (
     <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-      </ThemeProvider>
-
       <ElevationScroll>
         <AppBar>
           <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => setDrawer(true)}>
+            <IconButton edge="start" aria-label="menu" onClick={() => setDrawer(true)}>
               <MenuIcon />
             </IconButton>
               <Typography variant="h6" className={classes.title}>
                 {props.titleName}
               </Typography>
-            <IconButton color="inherit" onClick={() => (setCookie('isDark', changeTheme(cookies.isDark), { path: '/' , sameSite: 'strict'}))}>
+            <IconButton onClick={() => (setCookie('isDark', changeTheme(cookies.isDark), { path: '/' , sameSite: 'strict'}))}>
               {(cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
             </IconButton>
           </Toolbar>

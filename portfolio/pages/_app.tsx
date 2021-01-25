@@ -19,8 +19,8 @@ export default function App({Component, pageProps}) {
   return (
   <React.Fragment>
     <CookiesProvider>
-      <PageHead />
-      <Component {...pageProps} />
+        <PageHead />
+        <Component {...pageProps} />
     </CookiesProvider>
   </React.Fragment>
   )
