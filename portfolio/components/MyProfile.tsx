@@ -1,7 +1,7 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
 import Avatar from '@material-ui/core/Avatar'
 import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles'
+import Center from './Center'
 
 
 interface State {
@@ -15,6 +15,7 @@ const styles = (theme: Theme) =>
     marginBottom: '1rem',
     width: theme.spacing(13),
     height: theme.spacing(13),
+    cursor: 'pointer'
   },
 })
 
@@ -26,7 +27,7 @@ class MyAvatar extends React.Component<Props, State> {
     super(props)
 
     this.state = {
-      changeAvatar: true
+      changeAvatar: Boolean(Math.round(Math.random()))
     }
 
     this.avatarChange = this.avatarChange.bind(this)
@@ -42,11 +43,9 @@ class MyAvatar extends React.Component<Props, State> {
     const { classes } = this.props
 
     return (
-    <Grid container alignItems="center" justify="center">
-      <Grid item>
-        <Avatar alt="Yuto Watanabe" src={this.state.changeAvatar ? "/myIcon1.png" : "/myIcon2.png"} onClick={this.avatarChange} className={classes.icon} />
-      </Grid>
-    </Grid>
+    <Center>
+      <Avatar alt="Yuto Watanabe" src={this.state.changeAvatar ? "/myIcon1.png" : "/myIcon2.png"} onClick={this.avatarChange} className={classes.icon} />
+    </Center>
     )
   }
 }

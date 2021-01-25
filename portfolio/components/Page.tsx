@@ -6,7 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import selectTheme from './Theme'
 import { ThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { LeakRemoveTwoTone } from '@material-ui/icons'
 
 interface Props {
   titleName: string

@@ -1,8 +1,8 @@
 import Page from '../components/Page'
 import MyAvatar from '../components/MyProfile'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
+import Center from '../components/Center'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -14,16 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }),
 )
-
-function Center(props: {children: React.ReactNode}) {
-  return (
-    <Grid container alignItems="center" justify="center">
-      <Grid item>
-        {props.children}
-      </Grid>
-    </Grid>
-  )
-}
 
 export default function About() {
   const classes = useStyles()
