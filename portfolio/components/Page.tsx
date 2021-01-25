@@ -10,7 +10,7 @@ interface Props {
 export default function Page(props: Props) {
   return (
     <div>
-      <Header titleName={props.titleName} />
+      <Header titleName={props.titleName}/>
         {props.children}
       <Footer />
     </div>
