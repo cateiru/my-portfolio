@@ -170,7 +170,7 @@ function ElevateAppBar(props: {titleName: string}) {
 
       <Toolbar id="back-to-top-anchor" />
       <ScrollTop>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
+        <Fab color="secondary" size="medium" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
