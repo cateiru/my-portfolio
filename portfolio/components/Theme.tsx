@@ -1,6 +1,6 @@
 import { Theme } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
-import { deepOrange, grey, lightBlue } from "@material-ui/core/colors";
+import { deepOrange, grey, lightBlue, blue } from "@material-ui/core/colors";
 
 
 export default function selectTheme(theme: 'dark'|'light'): Theme {
@@ -19,14 +19,14 @@ function lightTheme(): Theme {
         main: grey[100],
       },
       secondary: {
-        main: lightBlue[200],
+        main: lightBlue[300],
       },
       background: {
         default: grey[50],
         paper: grey[50],
       },
       text: {
-        secondary: '#d1d1d1'
+        secondary: '#bababa'
       }
     },
     typography: {
@@ -44,7 +44,7 @@ function darkTheme(): Theme {
         contrastText: '#fff'
       },
       secondary: {
-        main: deepOrange[900],
+        main: blue[600],
       },
       background: {
         default: grey[900],

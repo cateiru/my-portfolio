@@ -5,7 +5,7 @@ export default function PageHead() {
   return (
     <Head>
       <meta charSet="utf-8" />
-      <title>渡邊悠人のポートフォリオ</title>
+      <title>YutoWatanabe | 渡邊悠人</title>
       <meta name="description" content="渡邊悠人のポートフォリオ" />
       <meta name="author" content="Copyright © 2021 Yuto Watanabe" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />

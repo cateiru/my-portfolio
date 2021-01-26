@@ -27,8 +27,8 @@ import ShareIcon from '@material-ui/icons/Share'
 import Box from '@material-ui/core/Box'
 import selectTheme from './Theme'
 import Grid from '@material-ui/core/Grid'
-import {useClient} from './CheckClient'
-import ContactMailIcon from '@material-ui/icons/ContactMail';
+import ContactMailIcon from '@material-ui/icons/ContactMail'
+import NoSsr from '@material-ui/core/NoSsr'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -143,7 +143,6 @@ function ElevateAppBar(props: {titleName: string}) {
   }
 
   const theme = selectTheme(cookies.isDark)
-  const isClient = useClient()
 
   return (
     <React.Fragment>
@@ -157,7 +156,9 @@ function ElevateAppBar(props: {titleName: string}) {
                 {props.titleName}
               </Typography>
             <IconButton onClick={() => (setCookie('isDark', changeTheme(cookies.isDark), { path: '/' , sameSite: 'strict'}))}>
-              {isClient ? (cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />) : null}
+              <NoSsr>
+                {(cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
+              </NoSsr>
             </IconButton>
           </Toolbar>
         </AppBar>

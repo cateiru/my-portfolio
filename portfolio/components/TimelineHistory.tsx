@@ -15,7 +15,6 @@ import SchoolIcon from '@material-ui/icons/School'
 import ApartmentIcon from '@material-ui/icons/Apartment'
 import FastfoodIcon from '@material-ui/icons/Fastfood'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { Height } from '@material-ui/icons'
 
 const styles = (theme: Theme) =>
   createStyles({
