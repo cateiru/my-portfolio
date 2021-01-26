@@ -57,6 +57,10 @@ const styles = (theme: Theme) =>
     dialogTitle: {
       fontFamily: "'M PLUS 1p', sans-serif",
       fontWeight: 400,
+    },
+    inputBox: {
+      // width: '350px'
+      width: '20rem'
     }
 })
 
@@ -218,14 +222,14 @@ class ContactForm extends React.Component<Props, State> {
         <div>
           <Center className={classes.textAreaBox}>
             <TextField required id="name" label="Your name" onChange={this.updateName} error={this.state.isWrittenName}
-                       value={this.state.name} color="secondary" helperText={this.state.errorName} />
+                       value={this.state.name} color="secondary" helperText={this.state.errorName} inputProps={{className: classes.inputBox }} />
           </Center>
           <Center className={classes.textAreaBox}>
             <TextField required id="email" label="E-mail address" error={this.state.mailIsError} helperText={this.state.errorMail}
-                       autoComplete="email" onChange={this.checkMail} value={this.state.mailAddress} color="secondary" />
+                       autoComplete="email" onChange={this.checkMail} value={this.state.mailAddress} color="secondary" inputProps={{className: classes.inputBox }} />
           </Center>
           <Center className={classes.textAreaBox}>
-            <TextField id="subject" label="Subject" onChange={this.updateTitle} value={this.state.title} color="secondary" />
+            <TextField id="subject" label="Subject" onChange={this.updateTitle} value={this.state.title} color="secondary" inputProps={{className: classes.inputBox }} />
           </Center>
           <Center className={classes.textAreaBox}>
             <TextField
@@ -241,6 +245,7 @@ class ContactForm extends React.Component<Props, State> {
               value={this.state.text}
               color="secondary"
               helperText={this.state.errorText}
+              inputProps={{className: classes.inputBox }}
             />
           </Center>
           <Center className={classes.sendButton}>

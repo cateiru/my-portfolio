@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: '4rem',
       fontFamily: "'M PLUS 1p', sans-serif",
       fontWeight: 300,
-    }
+    },
   })
 )
 
