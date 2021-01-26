@@ -34,7 +34,8 @@ const buttonTheme = (theme: Theme) => (createStyles({
     marginBottom: '10rem',
     width: '90%',
     maxWidth: '90%',
-    margin: '0 auto'
+    margin: '0 auto',
+    boxSizing: 'border-box',
   },
   button: {
     padding: theme.spacing(1),
@@ -43,6 +44,7 @@ const buttonTheme = (theme: Theme) => (createStyles({
   },
   item: {
     textAlign: 'center',
+    boxSizing: 'border-box',
   }
 }))
 
