@@ -48,10 +48,6 @@ ${data.text}
     data: qs.stringify({
       message: text
     })
-}
-
-  const postData = {
-    content: text
   }
 
   axios.request(config)
