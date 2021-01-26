@@ -28,6 +28,7 @@ const styles = (theme: Theme) =>
       marginTop: '10rem',
       marginBottom: '5rem',
       width: '100%',
+      scale: 1.2,
       boxSizing: 'border-box',
     },
     text: {
