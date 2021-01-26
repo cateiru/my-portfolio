@@ -27,7 +27,7 @@ export default function PageHead() {
       <meta name="twitter:image" content="https://sample.com/img/base/ogp-icon.jpg" />
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="theme-color" content="#000000" />
       <meta name="format-detection" content="telephone=no" />
 

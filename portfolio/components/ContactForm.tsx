@@ -10,7 +10,8 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import MuiAlert from '@material-ui/lab/Alert'
-import Snackbar from '@material-ui/core/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar'
+import axios from 'axios'
 
 
 
@@ -23,10 +24,11 @@ interface State {
   isWrittenName: boolean,
   isWrittenText: boolean,
   isSend: boolean,
+  isError: boolean,
   confirmation: boolean,
   errorName: string,
   errorMail: string,
-  errorText: string
+  errorText: string,
 }
 
 interface UploadText {
@@ -80,6 +82,7 @@ class ContactForm extends React.Component<Props, State> {
       isWrittenName: false,
       isWrittenText: false,
       isSend: false,
+      isError: false,
       confirmation: false,
       errorName: '',
       errorMail: '',
@@ -161,19 +164,29 @@ class ContactForm extends React.Component<Props, State> {
     }
 
     this.upload(uploadText)
-
-    this.setState(() => ({
-      name: '',
-      title: '',
-      text: '',
-      mailAddress: '',
-      isSend: true,
-      confirmation: false
-    }))
   }
 
   upload(uploadText: UploadText) {
-    console.log(JSON.stringify(uploadText))
+    axios
+      .post("/api/form",
+      uploadText,
+      { headers: { Accept: "application/json" } })
+      .then((response) => {
+        this.setState(() => ({
+          name: '',
+          title: '',
+          text: '',
+          mailAddress: '',
+          isSend: true,
+          confirmation: false
+        }))
+      })
+      .catch((error) => {
+        this.setState(() => ({
+          isError: true,
+          confirmation: false
+        }))
+      })
   }
 
   check(): boolean {
@@ -261,7 +274,7 @@ class ContactForm extends React.Component<Props, State> {
         onClose={() => {this.setState(() => ({confirmation: false}))}}
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
-      >
+        >
         <DialogTitle id="alert-dialog-slide-title" ><span className={classes.dialogTitle}>送信しますか？</span></DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description" component={'span'} color="textSecondary" className={classes.dialogText}>
@@ -278,7 +291,7 @@ class ContactForm extends React.Component<Props, State> {
           <Button onClick={() => {this.setState(() => ({confirmation: false}))}} >
             キャンセル
           </Button>
-          <Button onClick={this.send} color="secondary">
+          <Button onClick={this.send} type='submit' color="secondary">
             送信
           </Button>
         </DialogActions>
@@ -286,6 +299,12 @@ class ContactForm extends React.Component<Props, State> {
       <Snackbar open={this.state.isSend} autoHideDuration={6000} onClose={() => {this.setState(() => ({isSend: false}))}}>
         <MuiAlert onClose={() => {this.setState(() => ({isSend: false}))}} severity="success" variant="filled">
           送信しました。
+        </MuiAlert>
+      </Snackbar>
+      <Snackbar open={this.state.isError} autoHideDuration={6000}>
+        <MuiAlert onClose={() => {this.setState(() => ({isError: false}))}} severity="error" variant="filled">
+          送信できませんでした。<br />
+          時間をおいてもう一度試していただくか、"yuto.w51942@gmail.com" にお問い合わせください。
         </MuiAlert>
       </Snackbar>
       </form>
