@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
+import qs from 'querystring'
 
 interface Text {
   name: string,
@@ -23,7 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 async function sendDiscord(data: Text){
-  const token = process.env.DISCORD_TOKEN
+  const lineTokenURL = 'https://notify-api.line.me/api/notify'
+  const token = process.env.LINE_TOKEN
 
   const text = `【新着問い合わせ】
 * お名前: ${data.name}
@@ -36,24 +38,28 @@ ${data.text}
   console.log(text)
   console.log(token)
 
-  const config = {
+  const config: AxiosRequestConfig = {
+    url: lineTokenURL,
+    method: 'post',
     headers: {
-      'Accept': 'application/json',
-      'Content-type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${token}`
     },
-  }
+    data: qs.stringify({
+      message: text
+    })
+}
 
   const postData = {
     content: text
   }
 
-  axios.post(token, postData, config)
-    .then(result => {
-      console.log(result)
+  axios.request(config)
+    .then((res) => {
+      console.log(res.status)
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error)
     })
-
 }
 
