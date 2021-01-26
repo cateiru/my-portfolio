@@ -26,6 +26,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 async function sendDiscord(data: Text){
   const token = process.env.DISCORD_TOKEN
 
+  console.log(token)
+
   const text = `【新着問い合わせ】
 * お名前: ${data.name}
 * メールアドレス: ${data.mail}
