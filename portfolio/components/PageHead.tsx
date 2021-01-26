@@ -32,8 +32,7 @@ export default function PageHead() {
       <meta name="format-detection" content="telephone=no" />
 
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;500&family=Noto+Sans+JP:wght@500;700&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet" />
     </Head>
   )
 }

@@ -19,7 +19,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 const styles = (theme: Theme) =>
   createStyles({
     emphasis: {
-      fontWeight: 900,
+      fontWeight: 700,
       // color: '#7da1ba'
       borderBottom: `solid 2px ${theme.palette.secondary.main}`,
     },
@@ -27,7 +27,7 @@ const styles = (theme: Theme) =>
       marginTop: '10rem',
       marginBottom: '5rem',
       width: '100%',
-      scale: 1.2,
+      transform: 'scale(1.1)',
       boxSizing: 'border-box',
     },
     text: {
