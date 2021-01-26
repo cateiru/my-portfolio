@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import axios from 'axios'
-
+import fetch from 'node-fetch'
 
 interface Text {
   name: string,
@@ -37,22 +37,29 @@ ${data.text}
   console.log(text)
 
   const config = {
-    headers: {
       'Accept': 'application/json',
       'Content-type': 'application/json',
-    },
   }
 
   const postData = {
     content: text
   }
 
-  axios.post(token, postData, config)
-    .then(result => {
-      console.log(result)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+  // axios.post(token, postData, config)
+  //   .then(result => {
+  //     console.log(result)
+  //   })
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
+
+  fetch(token, {
+    method: 'post',
+    body: JSON.stringify(postData),
+    headers: config,
+  })
+  .then(res => {
+    console.log(res)
+  })
 }
 
