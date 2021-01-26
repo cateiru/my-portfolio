@@ -9,6 +9,9 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
+import MuiAlert from '@material-ui/lab/Alert'
+import Snackbar from '@material-ui/core/Snackbar';
+
 
 
 interface State {
@@ -187,7 +190,7 @@ class ContactForm extends React.Component<Props, State> {
     if(this.state.name.length <= 0) {
       _isWrittenName = true
       isTrueSend = false
-      _errorName = 'お名前を記述してください。'
+      _errorName = '名前を記述してください。'
     }
     if(this.state.text.length <= 0) {
       _isWrittenText = true
@@ -275,6 +278,11 @@ class ContactForm extends React.Component<Props, State> {
           </Button>
         </DialogActions>
       </Dialog>
+      <Snackbar open={this.state.isSend} autoHideDuration={6000} onClose={() => {this.setState(() => ({isSend: false}))}}>
+        <MuiAlert onClose={() => {this.setState(() => ({isSend: false}))}} severity="success" variant="filled">
+          送信しました。
+        </MuiAlert>
+      </Snackbar>
       </form>
     )
   }
