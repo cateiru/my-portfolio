@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import axios from 'axios'
-import fetch from 'node-fetch'
 
 interface Text {
   name: string,
@@ -10,7 +9,7 @@ interface Text {
   date: string
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let status = 500
   if (req.method === 'POST'){
     const getData: Text = req.body
@@ -23,7 +22,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.end()
 }
 
-function sendDiscord(data: Text){
+async function sendDiscord(data: Text){
   const token = process.env.DISCORD_TOKEN
 
   const text = `【新着問い合わせ】
@@ -35,31 +34,26 @@ ${data.text}
   `
 
   console.log(text)
+  console.log(token)
 
   const config = {
+    headers: {
       'Accept': 'application/json',
       'Content-type': 'application/json',
+    },
   }
 
   const postData = {
     content: text
   }
 
-  // axios.post(token, postData, config)
-  //   .then(result => {
-  //     console.log(result)
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
+  axios.post(token, postData, config)
+    .then(result => {
+      console.log(result)
+    })
+    .catch(error => {
+      console.log(error)
+    })
 
-  fetch(token, {
-    method: 'post',
-    body: JSON.stringify(postData),
-    headers: config,
-  })
-  .then(res => {
-    console.log(res)
-  })
 }
 
