@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import axios from 'axios'
-import { Webhook } from 'discord-webhook-node'
 
 
 interface Text {
@@ -12,7 +11,7 @@ interface Text {
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  let status = 404
+  let status = 500
   if (req.method === 'POST'){
     const getData: Text = req.body
     sendDiscord(getData)
@@ -24,36 +23,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.end()
 }
 
-// async function sendDiscord(data: Text){
-//   const token = process.env.DISCORD_TOKEN
-
-//   const text = `【新着問い合わせ】
-// * お名前: ${data.name}
-// * メールアドレス: ${data.mail}
-// * 送信日時: ${data.date}
-// * 内容
-// ${data.text}
-//   `
-
-//   const config = {
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-type': 'application/json',
-//     }
-//   }
-
-//   const postData = {
-//     content: text
-//   }
-
-//   axios.post(token, postData, config)
-// }
-
-function sendDiscord(data: Text) {
+function sendDiscord(data: Text){
   const token = process.env.DISCORD_TOKEN
-  const hook = new Webhook(token)
 
-    const text = `【新着問い合わせ】
+  const text = `【新着問い合わせ】
 * お名前: ${data.name}
 * メールアドレス: ${data.mail}
 * 送信日時: ${data.date}
@@ -61,6 +34,21 @@ function sendDiscord(data: Text) {
 ${data.text}
   `
 
-  hook.send(text);
+  const config = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json',
+    },
+  }
+
+  const postData = {
+    content: text
+  }
+
+  axios.post(token, postData, config)
+    .then(result => {})
+    .catch(error => {
+      console.log(error)
+    })
 }
 
