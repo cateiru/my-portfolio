@@ -10,13 +10,9 @@ interface Text {
   date: string
 }
 
-export default async function handler(req: NowRequest, res: NowResponse) {
-  let status = 500
-  if (req.method === 'POST'){
-    const getData: Text = req.body
-    sendDiscord(getData)
-    status = 200
-  }
+type Fn = (req: NowRequest, res: NowResponse) => Promise<void>
+
+  const allowCors = (fn: Fn) => async (req: NowRequest, res: NowResponse) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.setHeader('Access-Control-Allow-Origin', '*')
   // another common pattern
@@ -26,6 +22,20 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+  return await fn(req, res)
+}
+
+async function handler(req: NowRequest, res: NowResponse) {
+  let status = 500
+  if (req.method === 'POST'){
+    const getData: Text = req.body
+    sendDiscord(getData)
+    status = 200
+  }
   res.setHeader("content-type", "application/json")
   res.status(status)
   res.end()
@@ -66,4 +76,6 @@ ${data.text}
       console.log(error)
     })
 }
+
+export default allowCors(handler)
 
