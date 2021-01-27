@@ -3,6 +3,7 @@ import Avatar from '@material-ui/core/Avatar'
 import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles'
 import Center from './Center'
 import NoSsr from '@material-ui/core/NoSsr'
+import Image from 'next/image'
 
 interface State {
   changeAvatar: boolean,
@@ -44,9 +45,9 @@ class MyAvatar extends React.Component<Props, State> {
 
     return (
     <Center>
-      <NoSsr>
-        <Avatar alt="Yuto Watanabe" src={this.state.changeAvatar ? "/myIcon1.png" : "/myIcon2.png"} onClick={this.avatarChange} className={classes.icon} />
-      </NoSsr>
+      <Avatar alt="Yuto Watanabe" onClick={this.avatarChange} className={classes.icon} >
+        <Image src={this.state.changeAvatar ? "/myIcon1.png" : "/myIcon2.png"} alt="Yuto Watanabe's avatar" width={500} height={500} />
+      </Avatar>
     </Center>
     )
   }
