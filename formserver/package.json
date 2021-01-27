@@ -11,6 +11,6 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "dev": "ts-node index.ts"
+    "dev": "ts-node _index.ts"
   }
 }
