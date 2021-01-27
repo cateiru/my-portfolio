@@ -168,7 +168,7 @@ class ContactForm extends React.Component<Props, State> {
 
   upload(uploadText: UploadText) {
     axios
-      .post("/api/form",
+      .post("https://my-portfolio-form-server.vercel.app/",
       uploadText,
       { headers: { Accept: "application/json" } })
       .then((response) => {

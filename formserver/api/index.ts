@@ -12,7 +12,7 @@ interface Text {
 
 type Fn = (req: NowRequest, res: NowResponse) => Promise<void>
 
-  const allowCors = (fn: Fn) => async (req: NowRequest, res: NowResponse) => {
+const allowCors = (fn: Fn) => async (req: NowRequest, res: NowResponse) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.setHeader('Access-Control-Allow-Origin', '*')
   // another common pattern
@@ -30,18 +30,17 @@ type Fn = (req: NowRequest, res: NowResponse) => Promise<void>
 }
 
 async function handler(req: NowRequest, res: NowResponse) {
-  let status = 500
+  let status = 400
   if (req.method === 'POST'){
     const getData: Text = req.body
-    sendDiscord(getData)
-    status = 200
+    status = await sendDiscord(getData)
   }
   res.setHeader("content-type", "application/json")
   res.status(status)
   res.end()
 }
 
-async function sendDiscord(data: Text){
+async function sendDiscord(data: Text): number{
   const lineTokenURL = 'https://notify-api.line.me/api/notify'
   const token = process.env.LINE_TOKEN
 
@@ -54,7 +53,6 @@ ${data.text}
   `
 
   console.log(text)
-  console.log(token)
 
   const config: AxiosRequestConfig = {
     url: lineTokenURL,
@@ -68,13 +66,17 @@ ${data.text}
     })
   }
 
-  axios.request(config)
-    .then((res) => {
-      console.log(res.status)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+  let status = 200
+
+  try{
+    const response = await axios.request(config)
+    console.log(response)
+  }catch(error) {
+    status = 500
+  }
+
+  return status
+
 }
 
 export default allowCors(handler)
