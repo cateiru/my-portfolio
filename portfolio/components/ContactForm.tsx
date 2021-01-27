@@ -12,6 +12,8 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import MuiAlert from '@material-ui/lab/Alert'
 import Snackbar from '@material-ui/core/Snackbar'
 import axios from 'axios'
+import Backdrop from '@material-ui/core/Backdrop'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 
 
@@ -29,6 +31,7 @@ interface State {
   errorName: string,
   errorMail: string,
   errorText: string,
+  sending: boolean
 }
 
 interface UploadText {
@@ -63,6 +66,9 @@ const styles = (theme: Theme) =>
     inputBox: {
       // width: '350px'
       width: '20rem'
+    },
+    backdrop: {
+      zIndex: 1400
     }
 })
 
@@ -81,6 +87,7 @@ class ContactForm extends React.Component<Props, State> {
       mailIsError: false,
       isWrittenName: false,
       isWrittenText: false,
+      sending: false,
       isSend: false,
       isError: false,
       confirmation: false,
@@ -163,6 +170,10 @@ class ContactForm extends React.Component<Props, State> {
       date: nowTime
     }
 
+    this.setState(() => ({
+      sending: true
+    }))
+
     this.upload(uploadText)
   }
 
@@ -178,13 +189,15 @@ class ContactForm extends React.Component<Props, State> {
           text: '',
           mailAddress: '',
           isSend: true,
-          confirmation: false
+          confirmation: false,
+          sending: false
         }))
       })
       .catch((error) => {
         this.setState(() => ({
           isError: true,
-          confirmation: false
+          confirmation: false,
+          sending: false
         }))
       })
   }
@@ -267,6 +280,7 @@ class ContactForm extends React.Component<Props, State> {
             </Button>
           </Center>
         </div>
+
         <Dialog
         open={this.state.confirmation}
         // TransitionComponent={Transition}
@@ -275,6 +289,7 @@ class ContactForm extends React.Component<Props, State> {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
         >
+
         <DialogTitle id="alert-dialog-slide-title" ><span className={classes.dialogTitle}>送信しますか？</span></DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description" component={'span'} color="textSecondary" className={classes.dialogText}>
@@ -307,6 +322,10 @@ class ContactForm extends React.Component<Props, State> {
           時間をおいてもう一度試していただくか、"yuto.w51942@gmail.com" にお問い合わせください。
         </MuiAlert>
       </Snackbar>
+
+      <Backdrop open={this.state.sending} className={classes.backdrop} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       </form>
     )
   }
