@@ -1,13 +1,11 @@
 import Page from '../components/Page'
-import Box from '@material-ui/core/Box';
+import Undone from '../components/Undone'
 
 export default function Links() {
   return (
     <div>
       <Page titleName="Links" >
-        <Box>
-        {new Array(10000).fill('Hoge').join('\n')}
-        </Box>
+        <Undone />
       </Page>
     </div>
   )
