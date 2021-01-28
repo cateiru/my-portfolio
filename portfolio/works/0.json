@@ -1,0 +1,12 @@
+{
+  "title": "Auto C Execution",
+  "explanation": "大学のプログラミングの講義で、作成したプログラム（C言語）とそれを実行したターミナルのスクリーンショットを提出しろというものがあり毎回実行時にスクリーンショットするのはぶっちゃけだるかったため、PythonからSubprocessを使用してC言語をコンパイル→実行→出力をPillowで画像化するプログラムを作成した。一応S単位は取れた。",
+  "tag": [
+    "Python",
+    "subprocess",
+    "Pillow"
+  ],
+  "imageSrc": "",
+  "projectPageLink": "https://github.com/yuto51942/Auto-C-Execution",
+  "date": "2019年 9月"
+}

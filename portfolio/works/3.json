@@ -1,0 +1,12 @@
+{
+  "title": "TDUメーカー",
+  "explanation": "Reactの勉強ついでにと、ネタで作ったもの。「東京電機大学」の文字をランダムで表示する。さらにツイート可能。変換する文字は変更可能であるが分かりづらいためあまり知られていない。",
+  "tag": [
+    "TypeScript",
+    "React",
+    "Vercel"
+  ],
+  "imageSrc": "/works/TDU.png",
+  "projectPageLink": "https://github.com/yuto51942/tokyo-denki-univ",
+  "date": "2020年 12月"
+}

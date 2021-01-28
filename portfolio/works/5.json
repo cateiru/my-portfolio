@@ -1,0 +1,16 @@
+{
+  "title": "Earthquake Alert",
+  "explanation": "Twitter, Discord, Slack, LINEに送信可能な地震通知BOT。気象庁のPULL型XML電文を使用しており「震度速報」「震源・震度に関する情報」の情報から震度分布図を作成している。海外地震にも対応しておりその場合は世界地図となる。",
+  "tag": [
+    "Python",
+    "Selenium",
+    "SQLite",
+    "ConoHa VPN",
+    "Docker",
+    "TypeScript",
+    "OpenLayers"
+  ],
+  "imageSrc": "/works/e_alert.png",
+  "projectPageLink": "https://github.com/earthquake-alert/earthquake-alert",
+  "date": "2020年 6月"
+}

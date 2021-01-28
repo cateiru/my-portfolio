@@ -1,0 +1,16 @@
+{
+  "title": "うんちメーカー",
+  "explanation": "形態素解析により名詞を「うんち」に変換するAPIをPython/Flaskで作成し、Next.jsで作成したページからそのAPIをリクエストすることで翻訳サイトのような変換サイトを作成。今考えると「にゃあ」に変換したほうが個人的に需要あったな…",
+  "tag": [
+    "Python",
+    "形態素解析",
+    "Flask",
+    "Vercel",
+    "TypeScript",
+    "React",
+    "Next.js"
+  ],
+  "imageSrc": "/works/unchiMaker.png",
+  "projectPageLink": "https://github.com/yuto51942/unchi-maker-site",
+  "date": "2020年 12月"
+}

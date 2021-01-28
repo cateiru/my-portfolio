@@ -1,0 +1,14 @@
+{
+  "title": "ポートフォリオ",
+  "explanation": "「自分のポートフォリオ持っているのってかっこいい！」そのような考えから生まれた渡邊悠人のポートフォリオ。マテリアルUIを使用してできるだけシンプルかつ見やすく設計した。デザイン考えているときニヤニヤしていたり御飯食べるの忘れていつの間にか午前3時になってしまっていたりと時間泥棒である。好き",
+  "tag": [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Vercel",
+    "Material-ui"
+  ],
+  "imageSrc": "/works/portfolio.png",
+  "projectPageLink": "https://github.com/yuto51942/my-portfolio",
+  "date": "2021年 1月"
+}

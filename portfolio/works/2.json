@@ -1,0 +1,11 @@
+{
+  "title": "Class Cancellation Monitoring",
+  "explanation": "東京電機大学のポータルサイトであるUNIPAは通知機能がなく重要な連絡を見落とすことがあった。そのため、Seleniumを使用して定期的に新着連絡を取得するシステムを作成。",
+  "tag": [
+    "Python",
+    "Selenium"
+  ],
+  "imageSrc": "",
+  "projectPageLink": "https://github.com/yuto51942/class-cancellation-monitoring",
+  "date": "2019年 12月"
+}

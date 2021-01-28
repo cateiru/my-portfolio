@@ -24,7 +24,7 @@ export default function PageHead() {
       {/* <meta name="twitter:url" content="https://sample.com" /> */}
       <meta name="twitter:title" content="渡邊悠人のポートフォリオ" />
       <meta name="twitter:text:description" content="渡邊悠人のポートフォリオ" />
-      <meta name="twitter:image" content="https://sample.com/img/base/ogp-icon.jpg" />
+      {/* <meta name="twitter:image" content="https://sample.com/img/base/ogp-icon.jpg" /> */}
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

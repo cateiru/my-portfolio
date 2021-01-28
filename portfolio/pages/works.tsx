@@ -49,7 +49,7 @@ function works(props: InferGetStaticPropsType<typeof getStaticProps>) {
                 tag={element.tag} imageSrc={element.imageSrc} projectPageLink={element.projectPageLink}
                 date={element.date} />
             </Grid>
-          )) }
+          )).reverse() }
         </Grid>
         </Box>
       </Page>
