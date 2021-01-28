@@ -20,15 +20,11 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import HomeIcon from '@material-ui/icons/Home'
-import WorkIcon from '@material-ui/icons/Work'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import ShareIcon from '@material-ui/icons/Share'
 import Box from '@material-ui/core/Box'
 import selectTheme from './Theme'
 import Grid from '@material-ui/core/Grid'
-import ContactMailIcon from '@material-ui/icons/ContactMail'
 import NoSsr from '@material-ui/core/NoSsr'
+import { LINK_ITEM, LINK_ICONS } from './PageName'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -98,8 +94,7 @@ function changeTheme(theme: 'dark' | 'light' | undefined): string {
 
 function menuList(nowIndex: number) {
   const classes = useStyles()
-  const linkItem = ['', 'works', 'skills', 'links', 'contact']
-  const linkIcons = [<HomeIcon />, <WorkIcon />, <AccountCircleIcon />, <ShareIcon />, <ContactMailIcon />]
+
   return (
     <div className={classes.list}>
       <Grid container alignItems="center" justify="center">
@@ -110,11 +105,11 @@ function menuList(nowIndex: number) {
         </Grid>
       </Grid>
       <List>
-        {['ABOUT', 'WORKS', 'SKILLS', 'LINKS', 'CONTACT'].map((text, index) => (
-          <NextLink href={`/${linkItem[index]}`} key={text}>
+        {LINK_ITEM.map((text, index) => (
+          <NextLink href={`/${LINK_ITEM[index]}`} key={text}>
             <ListItem button key={text} selected={nowIndex === index}>
-              <ListItemIcon>{linkIcons[index]}</ListItemIcon>
-              <ListItemText primary={<Typography className={classes.listText} >{text}</Typography>} />
+              <ListItemIcon>{LINK_ICONS[index]}</ListItemIcon>
+              <ListItemText primary={<Typography className={classes.listText} >{text.toUpperCase()}</Typography>} />
             </ListItem>
           </NextLink>
         ))}
@@ -124,7 +119,7 @@ function menuList(nowIndex: number) {
 }
 
 function titleToIndex(title: string): number {
-  const titles = ['About', 'Works', 'Skills', 'Links']
+  const titles = LINK_ITEM.map((element) => (element.charAt(0).toUpperCase() + element.slice(1)))
 
   return titles.indexOf(title)
 }

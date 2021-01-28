@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import Center from '../components/Center'
 import NextLink from 'next/link'
 import Divider from '@material-ui/core/Divider'
+import { LINK_ITEM } from '../components/PageName'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,43 +54,25 @@ const buttonTheme = (theme: Theme) => (createStyles({
 interface Props extends WithStyles<typeof buttonTheme> {}
 
 const jumpButton: React.FC<Props> = ({ classes }: Props) => (
-    <div className={classes.jump}>
-      <Center>
-        <Grid container spacing={5} >
-          <Grid item xs className={classes.item}>
-            <NextLink href="/works">
-              <Button variant="outlined" className={classes.button}>
-                WORKS
-              </Button>
-            </NextLink>
-          </Grid>
-
-          <Grid item xs className={classes.item}>
-            <NextLink href="/skills">
-              <Button variant="outlined" className={classes.button}>
-                SKILLS
-              </Button>
-            </NextLink>
-          </Grid>
-
-          <Grid item xs className={classes.item}>
-            <NextLink href="/links">
-              <Button variant="outlined" className={classes.button}>
-                LINKS
-              </Button>
-            </NextLink>
-          </Grid>
-
-          <Grid item xs className={classes.item}>
-            <NextLink href="/contact">
-              <Button variant="outlined" className={classes.button}>
-                CONTACT
-              </Button>
-            </NextLink>
-          </Grid>
-        </Grid>
-      </Center>
-    </div>
+  <div className={classes.jump}>
+    <Center>
+      <Grid container spacing={5} >
+        { LINK_ITEM.map((element, _) => {
+        if(element !== 'about'){
+          return (
+            <Grid item xs className={classes.item}>
+              <NextLink href={`/${element}`}>
+                <Button variant="outlined" className={classes.button}>
+                  {element.toUpperCase()}
+                </Button>
+              </NextLink>
+            </Grid>
+          )
+        }
+        }) }
+      </Grid>
+    </Center>
+  </div>
   )
 
 const CustomButton = withStyles(buttonTheme)(jumpButton)
