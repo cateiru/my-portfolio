@@ -36,6 +36,9 @@ const styles = (theme: Theme) =>
       '@media only screen and (max-device-width: 480px)': {
         width: '350px'
       },
+      '@media only screen and (max-device-width: 280px)': {
+        width: '250px',
+      }
 
     },
     link: {

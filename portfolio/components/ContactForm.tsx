@@ -65,7 +65,13 @@ const styles = (theme: Theme) =>
     },
     inputBox: {
       // width: '350px'
-      width: '20rem'
+      width: '20rem',
+      '@media only screen and (max-device-width: 480px)': {
+        width: '17rem',
+      },
+      '@media only screen and (max-device-width: 280px)': {
+        width: '15rem',
+      }
     },
     backdrop: {
       zIndex: 1400

@@ -29,6 +29,9 @@ const styles = (theme: Theme) =>
       width: '100%',
       transform: 'scale(1.1)',
       boxSizing: 'border-box',
+      '@media only screen and (max-device-width: 600px)': {
+        transform: 'scale(1.0)',
+      },
     },
     text: {
       fontSize: '1rem',

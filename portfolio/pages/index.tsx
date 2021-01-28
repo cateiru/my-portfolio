@@ -32,10 +32,12 @@ const buttonTheme = (theme: Theme) => (createStyles({
   jump: {
     flexGrow: 1,
     marginBottom: '10rem',
-    width: '90%',
-    maxWidth: '90%',
+    width: '100%',
     margin: '0 auto',
     boxSizing: 'border-box',
+    '@media only screen and (max-device-width: 600px)': {
+      width: '10%'
+    },
   },
   button: {
     padding: theme.spacing(1),
