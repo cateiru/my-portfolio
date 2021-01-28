@@ -1,6 +1,7 @@
 import Page from '../components/Page'
-import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles'
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import WorksContents from '../components/WorksContents'
+import Grid from '@material-ui/core/Grid'
 import { GetStaticProps, InferGetStaticPropsType} from 'next'
 import Box from '@material-ui/core/Box'
 import React from 'react'
@@ -8,17 +9,26 @@ import fs from 'fs'
 import path from 'path'
 // import Undone from '../components/Undone'
 
-interface Props {
-  works: WorkData[]
-}
-
 interface WorkJsonData {
   title: string,
   explanation: string,
   tag: string[],
   imageSrc: string,
-  projectPageLink: string
+  projectPageLink: string,
+  date: string
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      margin: '3rem .7rem 2rem .7rem',
+    },
+    guid: {
+      lexBasis: 'auto',
+      minWidth: '0%'
+    }
+  }),
+)
 
 interface WorkData extends WorkJsonData {
   id: string
@@ -26,20 +36,21 @@ interface WorkData extends WorkJsonData {
 
 function works(props: InferGetStaticPropsType<typeof getStaticProps>) {
   const works: WorkData[] = props.works
+  const classes = useStyles()
 
-  console.log(works)
   return (
     <div>
       <Page titleName="Works" >
-        <Box>
+        <Box className={classes.root}>
+        <Grid container spacing={5} direction="row" justify="space-around" alignItems="flex-start" className={classes.guid} >
           { works.map((element) => (
-             <WorksContents
-              title={element.title}
-              explanation={element.explanation}
-              tag={element.tag}
-              imageSrc={element.imageSrc}
-              projectPageLink={element.projectPageLink} / >
-          ))}
+            <Grid item xs="auto" key={`grid_${element.id}`}>
+              <WorksContents key={element.id} title={element.title} explanation={element.explanation}
+                tag={element.tag} imageSrc={element.imageSrc} projectPageLink={element.projectPageLink}
+                date={element.date} />
+            </Grid>
+          )) }
+        </Grid>
         </Box>
       </Page>
     </div>
@@ -73,6 +84,7 @@ function readWorksJsonData(filePath: string): WorkData {
     tag: data.tag,
     imageSrc: data.imageSrc,
     projectPageLink: data.projectPageLink,
+    date: data.date,
     id: id
   }
 }
