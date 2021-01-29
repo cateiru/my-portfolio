@@ -92,7 +92,7 @@ class WorksContents extends React.Component<Props, State> {
 
     return (
       <Box className={classes.root}>
-        <a href={this.props.projectPageLink}  target="_blank" rel="noopener noreferrer" className={classes.link}>
+        <a href={this.props.projectPageLink} target="_blank" rel="noopener noreferrer" className={classes.link}>
           <Card raised={!this.state.mouseOn}
                 onMouseEnter={() => {this.setState(() => ({mouseOn: true}))}}
                 onMouseLeave={() => {this.setState(() => ({mouseOn: false}))}}
