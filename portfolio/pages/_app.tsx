@@ -11,7 +11,6 @@ import ReactGA from 'react-ga'
 
 
 function initGA(token) {
-  console.log(token)
   ReactGA.initialize(token)
 }
 
