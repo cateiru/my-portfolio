@@ -47,7 +47,15 @@ export default function App({Component, pageProps}) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
-  }, []);
+  }, [])
+
+  React.useEffect(() => {
+    // Listen for page changes after a navigation or when the query changes
+    router.events.on('routeChangeComplete', logPageView)
+    return () => {
+      router.events.off('routeChangeComplete', logPageView)
+    }
+  }, [router.events])
 
   return (
   <div className={classes.root}>
