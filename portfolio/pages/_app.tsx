@@ -7,17 +7,7 @@ import { CookiesProvider } from 'react-cookie'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-import ReactGA from 'react-ga'
-
-
-function initGA(token) {
-  ReactGA.initialize(token)
-}
-
-function logPageView() {
-  ReactGA.set({ page: window.location.pathname })
-  ReactGA.pageview(window.location.pathname)
-}
+import * as gtag from '../utils/gtag'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -31,17 +21,8 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function App({Component, pageProps}) {
   const classes = useStyles()
   const router = useRouter()
-  const GAToken = process.env.NEXT_PUBLIC_GA_TOKEN
 
   React.useEffect(() => {
-    initGA(GAToken)
-    // `routeChangeComplete` won't run for the first page load unless the query string is
-    // hydrated later on, so here we log a page view if this is the first render and
-    // there's no query string
-    if (!router.asPath.includes('?')) {
-      logPageView()
-    }
-
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -50,10 +31,12 @@ export default function App({Component, pageProps}) {
   }, [])
 
   React.useEffect(() => {
-    // Listen for page changes after a navigation or when the query changes
-    router.events.on('routeChangeComplete', logPageView)
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
-      router.events.off('routeChangeComplete', logPageView)
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
 
