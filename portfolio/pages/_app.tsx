@@ -1,12 +1,24 @@
 /**
  * this code from material-ui sample code page 'https://github.com/mui-org/material-ui/tree/master/examples/nextjs
  */
-import '../styles/globals.css'
 import PropTypes from 'prop-types';
 import PageHead from '../components/PageHead'
 import { CookiesProvider } from 'react-cookie'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { useRouter } from 'next/router'
 import * as React from 'react'
+import ReactGA from 'react-ga'
+
+
+function initGA() {
+  ReactGA.initialize(process.env.GA_TOKEN)
+}
+
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname })
+  ReactGA.pageview(window.location.pathname)
+}
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,7 +30,17 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function App({Component, pageProps}) {
   const classes = useStyles()
+  const router = useRouter()
+
   React.useEffect(() => {
+    initGA()
+    // `routeChangeComplete` won't run for the first page load unless the query string is
+    // hydrated later on, so here we log a page view if this is the first render and
+    // there's no query string
+    if (!router.asPath.includes('?')) {
+      logPageView()
+    }
+
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
