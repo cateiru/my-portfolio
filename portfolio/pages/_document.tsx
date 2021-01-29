@@ -8,9 +8,20 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
   render() {
+    const GAToken = process.env.NEXT_PUBLIC_GA_TOKEN
     return (
       <Html lang="ja">
         <Head>
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GAToken}`} />
+            <script dangerouslySetInnerHTML={{ __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GAToken}', {
+                page_path: window.location.pathname,
+              });
+            `, }} />
+
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;500&family=Noto+Sans+JP:wght@500;700&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet" />
         </Head>
