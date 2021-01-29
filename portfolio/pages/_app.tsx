@@ -10,8 +10,9 @@ import * as React from 'react'
 import ReactGA from 'react-ga'
 
 
-function initGA() {
-  ReactGA.initialize(process.env.GA_TOKEN)
+function initGA(token) {
+  console.log(token)
+  ReactGA.initialize(token)
 }
 
 function logPageView() {
@@ -31,9 +32,10 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function App({Component, pageProps}) {
   const classes = useStyles()
   const router = useRouter()
+  const GAToken = process.env.NEXT_PUBLIC_GA_TOKEN
 
   React.useEffect(() => {
-    initGA()
+    initGA(GAToken)
     // `routeChangeComplete` won't run for the first page load unless the query string is
     // hydrated later on, so here we log a page view if this is the first render and
     // there's no query string
