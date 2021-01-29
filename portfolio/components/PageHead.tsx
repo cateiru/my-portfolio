@@ -2,6 +2,12 @@
 import Head from 'next/head'
 
 export default function PageHead() {
+  let thisURL = ''
+
+  if(typeof window !== 'undefined') {
+    thisURL = window.location.href
+  }
+
   return (
     <Head>
       <meta charSet="utf-8" />
@@ -13,7 +19,7 @@ export default function PageHead() {
       <meta property="og:title" content="Yuto Watanabe" />
       <meta property="og:type" content="article" />
       <meta property="og:description" content="渡邊悠人のポートフォリオ" />
-      {/* <meta property="og:url" content="https://sample.com" /> */}
+      <meta property="og:url" content={thisURL} />
       <meta property="og:site_name" content="Yuto Watanabe" />
       {/* <meta property="og:image" content="https://sample.com/img/base/ogp-icon.jpg" /> */}
       <meta property="og:locale" content="ja_JP" />
@@ -21,10 +27,10 @@ export default function PageHead() {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@cateiru" />
       <meta name="twitter:creator" content="@cateiru" />
-      {/* <meta name="twitter:url" content="https://sample.com" /> */}
+      <meta name="twitter:url" content={thisURL} />
       <meta name="twitter:title" content="渡邊悠人のポートフォリオ" />
       <meta name="twitter:text:description" content="渡邊悠人のポートフォリオ" />
-      {/* <meta name="twitter:image" content="https://sample.com/img/base/ogp-icon.jpg" /> */}
+      {/* <meta name="twitter:image" content="/static/OGP.png" /> */}
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

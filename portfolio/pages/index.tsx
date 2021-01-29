@@ -60,7 +60,7 @@ const jumpButton: React.FC<Props> = ({ classes }: Props) => (
         { LINK_ITEM.map((element, _) => {
         if(element !== 'about'){
           return (
-            <Grid item xs className={classes.item}>
+            <Grid item xs className={classes.item} key={element}>
               <NextLink href={`/${element}`}>
                 <Button variant="outlined" className={classes.button}>
                   {element.toUpperCase()}
