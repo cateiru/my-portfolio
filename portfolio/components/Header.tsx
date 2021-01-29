@@ -25,6 +25,7 @@ import selectTheme from './Theme'
 import Grid from '@material-ui/core/Grid'
 import NoSsr from '@material-ui/core/NoSsr'
 import { LINK_ITEM, LINK_ICONS } from './PageName'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,6 +51,11 @@ const useStyles = makeStyles((theme: Theme) =>
     listText: {
       fontFamily: "'M PLUS 1p', sans-serif",
       fontWeight: 400,
+    },
+    githubLink: {
+      color : 'inherit',
+      textDecoration: 'none',
+      outline: 'none',
     }
   })
 )
@@ -151,6 +157,11 @@ function ElevateAppBar(props: {titleName: string}) {
               <Typography variant="h6" className={classes.title}>
                 {props.titleName}
               </Typography>
+            <a href="https://github.com/yuto51942/my-portfolio" target="_blank" rel="noopener noreferrer" className={classes.githubLink}>
+              <IconButton>
+                <GitHubIcon />
+              </IconButton>
+            </a>
             <IconButton onClick={() => (setCookie('isDark', changeTheme(cookies.isDark), { path: '/' , sameSite: 'strict'}))}>
               <NoSsr>
                 {(cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
