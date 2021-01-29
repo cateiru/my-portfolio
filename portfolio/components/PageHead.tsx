@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 export default function PageHead() {
   let thisURL = ''
+  const trackingId = process.env.NEXT_PUBLIC_GA_TOKEN
 
   if(typeof window !== 'undefined') {
     thisURL = window.location.href
@@ -40,6 +41,11 @@ export default function PageHead() {
 
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;500&family=Noto+Sans+JP:wght@500;700&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet" />
+
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${trackingId}`} />
+      <script dangerouslySetInnerHTML={{
+        __html: `(function(){ window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${trackingId}');})`
+      }} />
     </Head>
   )
 }
