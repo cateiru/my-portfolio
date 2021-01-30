@@ -55,6 +55,8 @@ const styles = (theme: Theme) =>
     tag: {
       margin: '.1rem .2rem .1rem .2rem',
       cursor: 'pointer',
+      color: theme.palette.text.secondary,
+      borderColor: theme.palette.text.secondary,
     }
 })
 
