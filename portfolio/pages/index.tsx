@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button'
 import Center from '../components/Center'
 import NextLink from 'next/link'
 import Divider from '@material-ui/core/Divider'
-import { LINK_ITEM } from '../utils/pageName'
+import { links } from '../utils/pageName'
 import ThemeProps from '../utils/themeProps'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -58,13 +58,13 @@ const jumpButton: React.FC<Props> = ({ classes }: Props) => (
   <div className={classes.jump}>
     <Center>
       <Grid container spacing={5} >
-        { LINK_ITEM.map((element, _) => {
-        if(element !== 'about'){
+        { links.map((element, _) => {
+        if(element.name !== 'about'){
           return (
-            <Grid item xs className={classes.item} key={element}>
-              <NextLink href={`/${element}`}>
+            <Grid item xs className={classes.item} key={element.name}>
+              <NextLink href={`/${element.name}`}>
                 <Button variant="outlined" className={classes.button}>
-                  {element.toUpperCase()}
+                  {element.name.toUpperCase()}
                 </Button>
               </NextLink>
             </Grid>

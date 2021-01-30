@@ -23,7 +23,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import NoSsr from '@material-ui/core/NoSsr'
-import { LINK_ITEM, LINK_ICONS } from '../utils/pageName'
+import { links } from '../utils/pageName'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import ThemeProps, { SetTheme, IsTheme } from '../utils/themeProps'
 
@@ -120,11 +120,11 @@ function menuList(nowIndex: number) {
         </Grid>
       </Grid>
       <List>
-        {LINK_ITEM.map((text, index) => (
-          <NextLink href={`/${LINK_ITEM[index]}`} key={text}>
-            <ListItem button key={text} selected={nowIndex === index}>
-              <ListItemIcon>{LINK_ICONS[index]}</ListItemIcon>
-              <ListItemText primary={<Typography className={classes.listText} >{text.toUpperCase()}</Typography>} />
+        {links.map((text, index) => (
+          <NextLink href={`/${text.name}`} key={text.name}>
+            <ListItem button key={text.name} selected={nowIndex === index}>
+              <ListItemIcon>{text.icon}</ListItemIcon>
+              <ListItemText primary={<Typography className={classes.listText} >{text.name.toUpperCase()}</Typography>} />
             </ListItem>
           </NextLink>
         ))}
@@ -134,7 +134,7 @@ function menuList(nowIndex: number) {
 }
 
 function titleToIndex(title: string): number {
-  const titles = LINK_ITEM.map((element) => (element.charAt(0).toUpperCase() + element.slice(1)))
+  const titles = links.map((element) => (element.name.charAt(0).toUpperCase() + element.name.slice(1)))
 
   return titles.indexOf(title)
 }
