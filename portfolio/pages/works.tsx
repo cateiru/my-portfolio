@@ -60,7 +60,7 @@ function works(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
 
-  const dirPath = path.join(process.cwd(), 'works')
+  const dirPath = path.join(process.cwd(), 'data', 'works')
   const filePaths = fs.readdirSync(dirPath)
   const worksData = []
 
