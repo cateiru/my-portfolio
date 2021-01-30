@@ -24,11 +24,19 @@ const useStyles = makeStyles((theme: Theme) =>
     header: {
       fontSize: '2rem',
       fontWeight: 700,
-      margin: '1rem 0 .5rem 0'
+      margin: '1rem 0 .5rem 0',
+
+      '@media only screen and (max-device-width: 600px)': {
+        clear: 'both'
+      },
     },
     text: {
       fontSize: '1rem',
-      wordWrap: 'break-word'
+      wordWrap: 'break-word',
+
+      '@media only screen and (max-device-width: 600px)': {
+        clear: 'both'
+      },
     },
     line: {
       backgroundColor: theme.palette.text.secondary,

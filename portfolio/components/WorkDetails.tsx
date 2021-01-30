@@ -7,7 +7,6 @@ import Fab from '@material-ui/core/Fab'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import Box from '@material-ui/core/Box'
-import Grid from '@material-ui/core/Grid'
 import { ChangeText } from './WrokJsonData'
 import Chip from '@material-ui/core/Chip'
 import LinkIcon from '@material-ui/icons/Link'
@@ -24,16 +23,26 @@ interface Props {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      maxWidth: '100%',
       margin: '1.5rem 5rem 3rem 5rem',
+      '@media only screen and (max-device-width: 1300px)': {
+        margin: '1rem 2rem 3rem 2rem',
+      },
+      '@media only screen and (max-device-width: 600px)': {
+        margin: '0 1rem 3rem 1rem',
+      },
     },
     title: {
       margin: '1rem 0 1rem 0',
       fontSize: '2.5rem',
       fontFamily: "'M PLUS 1p', sans-serif",
       fontWeight: 300,
+      '@media only screen and (max-device-width: 480px)': {
+        fontSize: '2rem',
+      },
     },
     textArea: {
-      margin: '1rem 0 0 0'
+      margin: '0'
     },
     backButton: {
       position: 'fixed',
@@ -41,23 +50,22 @@ const useStyles = makeStyles((theme: Theme) =>
       left: theme.spacing(2),
       zIndex: 1400
     },
-    image: {
-      margin: '1rem 100px 1rem 100px',
-    },
     figure: {
-      width: '700px',
+      width: '50%',
       float: 'left',
-      margin: '1rem 2rem 1rem 0'
+      margin: '1rem 2rem 1rem 0',
 
-      // '@media only screen and (max-device-width: 600px)': {
-      //   width: '400px'
-      // },
-      // '@media only screen and (max-device-width: 480px)': {
-      //   width: '350px'
-      // },
-      // '@media only screen and (max-device-width: 280px)': {
-      //   width: '250px',
-      // },
+      '@media only screen and (max-device-width: 1300px)': {
+        width: '50%',
+        margin: '0 10px 0 10px',
+        position: 'relative',
+      },
+      '@media only screen and (max-device-width: 1024px)': {
+        width: '100%',
+        position: 'relative',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      },
     },
     carousel: {
       textAlign: 'center',
@@ -69,16 +77,19 @@ const useStyles = makeStyles((theme: Theme) =>
       '& .selected': {
         borderColor: `${theme.palette.secondary.main} !important`,
       },
+      '& ul': {
+        padding: '0',
+      },
 
       width: '100%',
       height: 'auto',
     },
     tag: {
-      margin: '0 .5rem 0 0',
+      margin: '.3rem .35rem 0',
       cursor: 'pointer',
     },
     tags: {
-      margin: 0,
+      margin: '0',
     },
     tagA: {
       color : 'inherit',
@@ -86,13 +97,23 @@ const useStyles = makeStyles((theme: Theme) =>
       outline: 'none',
     },
     link: {
+      margin: '.2rem 0 0 0',
+      whiteSpace: 'nowrap',
     },
     linkbutton: {
-      margin: '0 0 0 .5rem',
+      margin: '0 0 0 0',
+
+      '@media only screen and (max-device-width: 600px)': {
+        margin: '1rem 0 0 0',
+      },
     },
     wrapper: {
       display: 'flex',
       justifyContent: 'space-between',
+
+      '@media only screen and (max-device-width: 600px)': {
+        display: 'inline',
+      },
     }
   }),
 )

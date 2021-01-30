@@ -7,7 +7,6 @@ import WorkDetails from '../../components/WorkDetails'
 import fs from 'fs'
 import path from 'path'
 
-
 function Work(props: InferGetStaticPropsType<typeof getStaticProps>){
   return (
     <div>
