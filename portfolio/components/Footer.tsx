@@ -1,4 +1,3 @@
-import Center from "./Center"
 import Box from '@material-ui/core/Box'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 

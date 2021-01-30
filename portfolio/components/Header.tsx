@@ -14,18 +14,22 @@ import Zoom from '@material-ui/core/Zoom'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import Brightness7Icon from '@material-ui/icons/Brightness7'
 import { useCookies } from 'react-cookie'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { CookieSetOptions } from 'universal-cookie'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Box from '@material-ui/core/Box'
-import selectTheme from './Theme'
 import Grid from '@material-ui/core/Grid'
 import NoSsr from '@material-ui/core/NoSsr'
-import { LINK_ITEM, LINK_ICONS } from './PageName'
+import { LINK_ITEM, LINK_ICONS } from '../utils/pageName'
 import GitHubIcon from '@material-ui/icons/GitHub'
+import ThemeProps, { SetTheme, IsTheme } from '../utils/themeProps'
+
+interface Props extends ThemeProps {
+  titleName: string
+}
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -91,11 +95,16 @@ function ScrollTop(props: {children: React.ReactNode}) {
   );
 }
 
-function changeTheme(theme: 'dark' | 'light' | undefined): string {
-  if(theme === 'light'){
-    return 'dark'
+function changeTheme(nowTheme: IsTheme, setTheme: SetTheme,
+                     setCookie: (name: string, value: any, options?: CookieSetOptions) => void) {
+  const change = (nowTheme: string) => {
+    return nowTheme === 'light'? 'dark' : 'light'
   }
-  return 'light'
+  const newTheme = change(nowTheme)
+
+  setTheme(newTheme)
+  setCookie('isTheme', newTheme, { path: '/' , sameSite: 'strict' })
+
 }
 
 function menuList(nowIndex: number) {
@@ -130,21 +139,17 @@ function titleToIndex(title: string): number {
   return titles.indexOf(title)
 }
 
-function ElevateAppBar(props: {titleName: string}) {
+function ElevateAppBar(props: Props) {
   const classes = useStyles()
 
   const [cookies, setCookie, removeCookie] = useCookies(['isDark'])
   const [drawerOpen, setDrawer] = React.useState(false)
 
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-
-
-  if(typeof cookies.isDark === 'undefined'){
-    const defaultTheme = prefersDarkMode ? 'dark' : 'light'
-    setCookie('isDark', defaultTheme, { path: '/' , sameSite: 'strict' })
-  }
-
-  const theme = selectTheme(cookies.isDark)
+  // React.useEffect(() => {
+  //   if(typeof cookies.isTheme === 'undefined'){
+  //     setCookie('isTheme', defaultTheme, { path: '/' , sameSite: 'strict' })
+  //   }
+  // }, [prefersDarkMode])
 
   return (
     <React.Fragment>
@@ -162,9 +167,9 @@ function ElevateAppBar(props: {titleName: string}) {
                 <GitHubIcon />
               </IconButton>
             </a>
-            <IconButton onClick={() => (setCookie('isDark', changeTheme(cookies.isDark), { path: '/' , sameSite: 'strict'}))}>
+            <IconButton onClick={() => (changeTheme(props.isTheme, props.setTheme, setCookie))}>
               <NoSsr>
-                {(cookies.isDark === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
+                {(props.isTheme === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
               </NoSsr>
             </IconButton>
           </Toolbar>
@@ -185,11 +190,11 @@ function ElevateAppBar(props: {titleName: string}) {
   );
 }
 
-export default function Header(props: {titleName: string}) {
+export default function Header(props: Props) {
   return (
     <header>
       <nav>
-        <ElevateAppBar titleName={props.titleName} />
+        <ElevateAppBar titleName={props.titleName} setTheme={props.setTheme} isTheme={props.isTheme} />
       </nav>
     </header>
   )

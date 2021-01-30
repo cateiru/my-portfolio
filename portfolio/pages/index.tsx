@@ -8,7 +8,8 @@ import Button from '@material-ui/core/Button'
 import Center from '../components/Center'
 import NextLink from 'next/link'
 import Divider from '@material-ui/core/Divider'
-import { LINK_ITEM } from '../components/PageName'
+import { LINK_ITEM } from '../utils/pageName'
+import ThemeProps from '../utils/themeProps'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -77,12 +78,12 @@ const jumpButton: React.FC<Props> = ({ classes }: Props) => (
 
 const CustomButton = withStyles(buttonTheme)(jumpButton)
 
-export default function About() {
+export default function About({ setTheme, isTheme }: ThemeProps) {
   const classes = useStyles()
 
   return (
     <div>
-      <Page titleName="About" >
+      <Page titleName="About" setTheme={setTheme} isTheme={isTheme} >
         <MyAvatar />
           <Box fontSize="h3.fontSize" className={classes.name}>
             渡邊悠人

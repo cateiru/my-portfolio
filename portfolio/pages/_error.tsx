@@ -1,6 +1,6 @@
-import Center from '../components/Center'
 import Page from '../components/Page'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import ThemeProps from '../utils/themeProps'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -31,11 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export default function About() {
+export default function Error({ setTheme, isTheme }: ThemeProps) {
   const classes = useStyles()
 
   return (
-    <Page titleName="Error" >
+    <Page titleName="Error" setTheme={setTheme} isTheme={isTheme} >
       <p className={classes.center} color="primary">
         404 | Not Found.
       </p>

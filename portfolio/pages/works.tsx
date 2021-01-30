@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box'
 import React from 'react'
 import fs from 'fs'
 import path from 'path'
+import { SetTheme, IsTheme } from '../utils/themeProps'
 // import Undone from '../components/Undone'
 
 interface WorkJsonData {
@@ -40,7 +41,7 @@ function works(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
   return (
     <div>
-      <Page titleName="Works" >
+      <Page titleName="Works" setTheme={props.setTheme as SetTheme} isTheme={props.isTheme as IsTheme} >
         <Box className={classes.root}>
         <Grid container spacing={5} direction="row" justify="space-around" alignItems="flex-start" className={classes.guid} >
           { works.map((element) => (

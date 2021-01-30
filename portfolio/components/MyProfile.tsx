@@ -2,7 +2,6 @@ import React from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import { Theme, createStyles, withStyles, WithStyles } from '@material-ui/core/styles'
 import Center from './Center'
-import NoSsr from '@material-ui/core/NoSsr'
 import Image from 'next/image'
 
 interface State {
