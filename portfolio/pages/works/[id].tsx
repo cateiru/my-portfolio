@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Page'
 import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType} from 'next'
-import { WorkJsonData } from '../../utils/wrokJsonData'
+import { WorkJsonData } from '../../components/WrokJsonData'
 import { SetTheme, IsTheme } from '../../utils/themeProps'
 import WorkDetails from '../../components/WorkDetails'
 import fs from 'fs'

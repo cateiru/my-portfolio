@@ -8,7 +8,7 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import { SetTheme, IsTheme } from '../utils/themeProps'
-import { WorkJsonData } from '../utils/wrokJsonData'
+import { WorkJsonData } from '../components/WrokJsonData'
 // import Undone from '../components/Undone'
 
 interface _WorkJsonData {

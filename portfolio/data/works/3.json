@@ -9,6 +9,12 @@
   "imgSrc": [
     "/works/TDU.png"
   ],
-  "projectPageLink": "https://github.com/yuto51942/tokyo-denki-univ",
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/yuto51942/tokyo-denki-univ"
+    }
+  ],
+  "text": [],
   "date": "2020年 12月"
 }

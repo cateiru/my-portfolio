@@ -13,6 +13,12 @@
   "imgSrc": [
     "/works/unchiMaker.png"
   ],
-  "projectPageLink": "https://github.com/yuto51942/unchi-maker-site",
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/yuto51942/unchi-maker-site"
+    }
+  ],
+  "text": [],
   "date": "2020年 12月"
 }

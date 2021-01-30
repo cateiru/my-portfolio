@@ -6,6 +6,12 @@
     "Selenium"
   ],
   "imgSrc": [],
-  "projectPageLink": "https://github.com/yuto51942/class-cancellation-monitoring",
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/yuto51942/class-cancellation-monitoring"
+    }
+  ],
+  "text": [],
   "date": "2019年 12月"
 }

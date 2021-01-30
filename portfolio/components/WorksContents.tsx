@@ -80,7 +80,7 @@ class WorksContents extends React.Component<Props, State> {
 
   statusTag(classes: Record<string, string>) {
     return this.props.tag.map((element, _) => {
-      return <Chip variant="outlined" color="secondary" label={element} className={classes.tag} size="small" key={element} />
+      return <Chip variant="outlined" color="primary" label={element} className={classes.tag} size="small" key={element} />
     })
   }
 

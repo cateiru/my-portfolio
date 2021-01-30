@@ -11,6 +11,12 @@
   "imgSrc": [
     "/works/portfolio.png"
   ],
-  "projectPageLink": "https://github.com/yuto51942/my-portfolio",
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/yuto51942/my-portfolio"
+    }
+  ],
+  "text": [],
   "date": "2021年 1月"
 }

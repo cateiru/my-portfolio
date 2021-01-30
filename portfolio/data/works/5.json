@@ -5,7 +5,7 @@
     "Python",
     "Selenium",
     "SQLite",
-    "ConoHa VPN",
+    "ConoHa VPS",
     "Docker",
     "TypeScript",
     "OpenLayers"
@@ -15,6 +15,14 @@
     "/works/e_alert2.jpeg",
     "/works/e_alert3.png"
   ],
-  "projectPageLink": "https://github.com/earthquake-alert/earthquake-alert",
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/earthquake-alert/earthquake-alert"
+    }
+  ],
+  "text": [
+    "## どんなものか"
+  ],
   "date": "2020年 6月"
 }

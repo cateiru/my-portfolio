@@ -1,12 +1,17 @@
 import React from 'react'
-import { WorkJsonData } from '../utils/wrokJsonData'
+import { WorkJsonData } from './WrokJsonData'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import Link from 'next/link'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import Fab from '@material-ui/core/Fab'
-import Image from 'next/image'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
+import { ChangeText } from './WrokJsonData'
+import Chip from '@material-ui/core/Chip'
+// import Image from 'next/image'
+
 
 interface Props {
   docData: WorkJsonData
@@ -15,10 +20,16 @@ interface Props {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      margin: '1rem',
+      margin: '1.5rem 5rem 3rem 5rem',
     },
     title: {
+      margin: '1rem 0 1rem 0',
       fontSize: '2.5rem',
+      fontFamily: "'M PLUS 1p', sans-serif",
+      fontWeight: 300,
+    },
+    textArea: {
+      margin: '1rem 0 0 0'
     },
     backButton: {
       position: 'fixed',
@@ -27,16 +38,48 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 1400
     },
     image: {
-      margin: '1rem 15rem 1rem 15rem',
+      margin: '1rem 100px 1rem 100px',
+    },
+    figure: {
+      width: '700px',
+      float: 'left',
+      margin: '1rem 2rem 1rem 0'
+
+      // '@media only screen and (max-device-width: 600px)': {
+      //   width: '400px'
+      // },
+      // '@media only screen and (max-device-width: 480px)': {
+      //   width: '350px'
+      // },
+      // '@media only screen and (max-device-width: 280px)': {
+      //   width: '250px',
+      // },
     },
     carousel: {
       textAlign: 'center',
+
       '& .thumb': {
         borderColor: `${theme.palette.primary.main} !important`,
+        cursor: 'pointer',
       },
       '& .selected': {
         borderColor: `${theme.palette.secondary.main} !important`,
-      }
+      },
+
+      width: '100%',
+      height: 'auto',
+    },
+    tag: {
+      margin: '0 .5rem 0 0',
+      cursor: 'pointer',
+    },
+    tags: {
+      margin: 0,
+    },
+    tagA: {
+      color : 'inherit',
+      textDecoration: 'none',
+      outline: 'none',
     }
   }),
 )
@@ -52,10 +95,29 @@ function ImageView({ images }: { images: string[]}) {
     showStatus={false} swipeable useKeyboardArrows dynamicHeight className={classes.carousel}>
       {images.map((image, index) => (
         <div key={index} >
-          <img src={`/_next/image?url=${image}&w=1920&q=75`} key={index}/>
+          <img src={image} key={index}/>
+          {/* <Image src={image} width={960} height={540} priority={true} key={index} /> */}
         </div>
       ))}
     </Carousel>
+  )
+}
+
+function TagView( { tags }: { tags: string[] }) {
+  const classes = useStyles()
+
+  const tagElements = tags.map((element, index) => {
+    return (
+      <a href={`https://www.google.com/search?q=${element}`} target="_blank" rel="noopener noreferrer" className={classes.tagA}>
+        <Chip variant="outlined" color="secondary" label={element} className={classes.tag} size="small" key={index} />
+      </a>
+    )
+  })
+
+  return (
+    <React.Fragment>
+      {tagElements}
+    </React.Fragment>
   )
 }
 
@@ -72,8 +134,16 @@ export default function WorkDetails(props: Props) {
       <div className={classes.title}>
         {props.docData.title}
       </div>
-      <div className={classes.image}>
-        <ImageView images={props.docData.imgSrc} />
+      <div className={classes.tags}>
+        <TagView tags={props.docData.tag} />
+      </div>
+      <div className={classes.textArea}>
+        <figure className={classes.figure}>
+          <Box boxShadow={10}>
+            <ImageView images={props.docData.imgSrc} />
+          </Box>
+        </figure>
+        <ChangeText texts={props.docData.text} />
       </div>
     </div>
   )
