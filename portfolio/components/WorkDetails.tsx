@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'fixed',
       bottom: theme.spacing(2),
       left: theme.spacing(2),
-      zIndex: 1400
+      zIndex: 1100
     },
     figure: {
       width: '50%',
