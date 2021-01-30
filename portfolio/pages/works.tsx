@@ -8,9 +8,10 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import { SetTheme, IsTheme } from '../utils/themeProps'
+import { WorkJsonData } from '../utils/wrokJsonData'
 // import Undone from '../components/Undone'
 
-interface WorkJsonData {
+interface _WorkJsonData {
   title: string,
   explanation: string,
   tag: string[],
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-interface WorkData extends WorkJsonData {
+interface WorkData extends _WorkJsonData {
   id: string
 }
 
@@ -83,8 +84,8 @@ function readWorksJsonData(filePath: string): WorkData {
     title: data.title,
     explanation: data.explanation,
     tag: data.tag,
-    imageSrc: data.imageSrc,
-    projectPageLink: data.projectPageLink,
+    imageSrc: data.imgSrc[0] || '',
+    projectPageLink: `/works/${id}`,
     date: data.date,
     id: id
   }

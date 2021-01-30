@@ -6,7 +6,13 @@
     "subprocess",
     "Pillow"
   ],
-  "imageSrc": "",
-  "projectPageLink": "https://github.com/yuto51942/Auto-C-Execution",
+  "imgSrc": [],
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/yuto51942/Auto-C-Execution"
+    }
+  ],
+  "text": [],
   "date": "2019年 9月"
 }

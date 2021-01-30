@@ -8,7 +8,9 @@
     "Vercel",
     "Material-ui"
   ],
-  "imageSrc": "/works/portfolio.png",
+  "imgSrc": [
+    "/works/portfolio.png"
+  ],
   "projectPageLink": "https://github.com/yuto51942/my-portfolio",
   "date": "2021年 1月"
 }

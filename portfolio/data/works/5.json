@@ -10,7 +10,11 @@
     "TypeScript",
     "OpenLayers"
   ],
-  "imageSrc": "/works/e_alert.png",
+  "imgSrc": [
+    "/works/e_alert.png",
+    "/works/e_alert2.jpeg",
+    "/works/e_alert3.png"
+  ],
   "projectPageLink": "https://github.com/earthquake-alert/earthquake-alert",
   "date": "2020年 6月"
 }

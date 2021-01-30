@@ -10,7 +10,9 @@
     "React",
     "Next.js"
   ],
-  "imageSrc": "/works/unchiMaker.png",
+  "imgSrc": [
+    "/works/unchiMaker.png"
+  ],
   "projectPageLink": "https://github.com/yuto51942/unchi-maker-site",
   "date": "2020年 12月"
 }

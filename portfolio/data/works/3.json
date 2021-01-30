@@ -6,7 +6,9 @@
     "React",
     "Vercel"
   ],
-  "imageSrc": "/works/TDU.png",
+  "imgSrc": [
+    "/works/TDU.png"
+  ],
   "projectPageLink": "https://github.com/yuto51942/tokyo-denki-univ",
   "date": "2020年 12月"
 }
