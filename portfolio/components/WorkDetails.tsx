@@ -10,6 +10,10 @@ import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import { ChangeText } from './WrokJsonData'
 import Chip from '@material-ui/core/Chip'
+import LinkIcon from '@material-ui/icons/Link'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import TwitterIcon from '@material-ui/icons/Twitter'
+import Button from '@material-ui/core/Button'
 // import Image from 'next/image'
 
 
@@ -80,6 +84,15 @@ const useStyles = makeStyles((theme: Theme) =>
       color : 'inherit',
       textDecoration: 'none',
       outline: 'none',
+    },
+    link: {
+    },
+    linkbutton: {
+      margin: '0 0 0 .5rem',
+    },
+    wrapper: {
+      display: 'flex',
+      justifyContent: 'space-between',
     }
   }),
 )
@@ -121,6 +134,26 @@ function TagView( { tags }: { tags: string[] }) {
   )
 }
 
+function LinkButton( { link, key }: {link: {host: string, url: string}, key: number} ) {
+  const classes = useStyles()
+  let icon = <LinkIcon />
+
+  switch(link.host.toLowerCase()) {
+    case 'github':
+      icon = <GitHubIcon />
+      break
+    case 'twitter':
+      icon = <TwitterIcon />
+      break
+  }
+
+  return (
+    <Button href={link.url} key={key} startIcon={icon} className={classes.linkbutton}>
+      {link.host}
+    </Button>
+  )
+}
+
 export default function WorkDetails(props: Props) {
   const classes = useStyles()
 
@@ -134,8 +167,15 @@ export default function WorkDetails(props: Props) {
       <div className={classes.title}>
         {props.docData.title}
       </div>
-      <div className={classes.tags}>
-        <TagView tags={props.docData.tag} />
+      <div className={classes.wrapper}>
+        <div className={classes.tags}>
+          <TagView tags={props.docData.tag} />
+        </div>
+        <div className={classes.link}>
+          {props.docData.links.map((element, index) => (
+            <LinkButton link={element} key={index} />
+          ))}
+        </div>
       </div>
       <div className={classes.textArea}>
         <figure className={classes.figure}>
