@@ -6,7 +6,7 @@ export default function Links({ setTheme, isTheme }: ThemeProps) {
   return (
     <div>
       <Page titleName="Links" setTheme={setTheme} isTheme={isTheme} >
-        <Undone />
+        <Undone text="このページは現在作成中です。" />
       </Page>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import Divider from '@material-ui/core/Divider'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
+import Undone from './Undone'
 
 export interface WorkJsonData {
   title: string,
@@ -116,6 +117,12 @@ function analysisText(index: number, text: string){
 
 export function ChangeText({ texts }: { texts: string[] }) {
   const classes = useStyles()
+
+  if(texts.length === 0) {
+    return (
+      <Undone text="このページは書きかけ、または書き忘れです。" />
+    )
+  }
 
   return (
     <React.Fragment>
