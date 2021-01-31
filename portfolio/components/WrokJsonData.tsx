@@ -62,22 +62,28 @@ function analysisText(index: number, text: string){
   text = text.slice(2)
   }
 
-  const highlightText = text.split('**').map(element => {
+  const highlightText = text.split('**').map((element, _index) => {
     if(isHighlight) {
       isHighlight = false
       return (
-        <span className={classes.highlight}>{element}</span>
+        <React.Fragment key={_index}>
+          <span className={classes.highlight}>{element}</span>
+        </React.Fragment>
       )
     }else{
       isHighlight = true
-      return <span>{element}</span>
+      return (
+        <React.Fragment key={`text${_index}`}>
+          {element}
+        </React.Fragment>
+      )
     }
   })
 
   if(isHeader) {
     return (
-      <React.Fragment>
-        <p className={classes.header} key={index}>
+      <React.Fragment key={index}>
+        <p className={classes.header}>
           {highlightText}
         </p>
         <Divider className={classes.line} />
@@ -85,19 +91,17 @@ function analysisText(index: number, text: string){
     )
   }else {
     return (
-      <p className={classes.text} key={index}>
-        {highlightText}
-      </p>
+      <React.Fragment key={index}>
+        <p className={classes.text}>
+          {highlightText}
+        </p>
+      </React.Fragment>
     )
   }
 }
 
 export function ChangeText({ texts }: { texts: string[] }) {
   const classes = useStyles()
-
-  if(texts.length === 0) {
-    return <div />
-  }
 
   return (
     <React.Fragment>

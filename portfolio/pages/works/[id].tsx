@@ -9,7 +9,7 @@ import path from 'path'
 
 function Work(props: InferGetStaticPropsType<typeof getStaticProps>){
   return (
-    <div>
+    <div key={props.id}>
       <Page titleName="Works" setTheme={props.setTheme as SetTheme} isTheme={props.isTheme as IsTheme} >
         <WorkDetails docData={props.data} />
       </Page>

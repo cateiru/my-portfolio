@@ -142,7 +142,7 @@ function TagView( { tags }: { tags: string[] }) {
 
   const tagElements = tags.map((element, index) => {
     return (
-      <a href={`https://www.google.com/search?q=${element}`} target="_blank" rel="noopener noreferrer" className={classes.tagA}>
+      <a href={`https://www.google.com/search?q=${element}`} target="_blank" rel="noopener noreferrer" className={classes.tagA} key={index}>
         <Chip variant="outlined" color="secondary" label={element} className={classes.tag} size="small" key={index} />
       </a>
     )
@@ -155,7 +155,7 @@ function TagView( { tags }: { tags: string[] }) {
   )
 }
 
-function LinkButton( { link, key }: {link: {host: string, url: string}, key: number} ) {
+function LinkButton( { link, index }: {link: {host: string, url: string}, index: number} ) {
   const classes = useStyles()
   let icon = <LinkIcon />
 
@@ -169,7 +169,7 @@ function LinkButton( { link, key }: {link: {host: string, url: string}, key: num
   }
 
   return (
-    <Button href={link.url} key={key} startIcon={icon} className={classes.linkbutton}>
+    <Button href={link.url} key={index} startIcon={icon} className={classes.linkbutton}>
       {link.host}
     </Button>
   )
@@ -179,26 +179,26 @@ export default function WorkDetails(props: Props) {
   const classes = useStyles()
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} key="root">
       <Link href="/works">
         <Fab color="secondary" size="medium" className={classes.backButton}>
           <ArrowBackIcon />
         </Fab>
       </Link>
-      <div className={classes.title}>
+      <div className={classes.title} >
         {props.docData.title}
       </div>
-      <div className={classes.wrapper}>
-        <div className={classes.tags}>
+      <div className={classes.wrapper} key="tagAndLink">
+        <div className={classes.tags} key="tag">
           <TagView tags={props.docData.tag} />
         </div>
-        <div className={classes.link}>
+        <div className={classes.link} key="link">
           {props.docData.links.map((element, index) => (
-            <LinkButton link={element} key={index} />
+            <LinkButton link={element} index={index} key={index} />
           ))}
         </div>
       </div>
-      <div className={classes.textArea}>
+      <div className={classes.textArea} key="textArea">
         <figure className={classes.figure}>
           <Box boxShadow={10}>
             <ImageView images={props.docData.imgSrc} />
