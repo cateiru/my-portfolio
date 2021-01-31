@@ -8,6 +8,7 @@ import CardActions from '@material-ui/core/CardActions'
 import Typography from '@material-ui/core/Typography'
 import Image from 'next/image'
 import Chip from '@material-ui/core/Chip'
+import Link from 'next/link'
 
 
 interface Props extends WithStyles<typeof styles> {
@@ -29,6 +30,7 @@ const styles = (theme: Theme) =>
     root: {
       width: '576px',
       height: 'auto',
+      cursor: 'pointer',
 
       '@media only screen and (max-device-width: 600px)': {
         width: '400px'
@@ -39,12 +41,6 @@ const styles = (theme: Theme) =>
       '@media only screen and (max-device-width: 280px)': {
         width: '250px',
       }
-
-    },
-    link: {
-      color : 'inherit',
-      textDecoration: 'none',
-      outline: 'none',
     },
     image: {
       width: '100%',
@@ -57,7 +53,10 @@ const styles = (theme: Theme) =>
       margin: '0 .2rem .5rem .2rem',
     },
     tag: {
-      margin: '.1rem .2rem .1rem .2rem'
+      margin: '.1rem .2rem .1rem .2rem',
+      cursor: 'pointer',
+      color: theme.palette.text.secondary,
+      borderColor: theme.palette.text.secondary,
     }
 })
 
@@ -83,7 +82,7 @@ class WorksContents extends React.Component<Props, State> {
 
   statusTag(classes: Record<string, string>) {
     return this.props.tag.map((element, _) => {
-      return <Chip variant="outlined" color="secondary" label={element} className={classes.tag} size="small" key={element} />
+      return <Chip variant="outlined" color="primary" label={element} className={classes.tag} size="small" key={element} />
     })
   }
 
@@ -92,14 +91,14 @@ class WorksContents extends React.Component<Props, State> {
 
     return (
       <Box className={classes.root}>
-        <a href={this.props.projectPageLink} target="_blank" rel="noopener noreferrer" className={classes.link}>
+        <Link href={this.props.projectPageLink} >
           <Card raised={!this.state.mouseOn}
                 onMouseEnter={() => {this.setState(() => ({mouseOn: true}))}}
                 onMouseLeave={() => {this.setState(() => ({mouseOn: false}))}}
           >
             <CardHeader title={this.props.title} subheader={this.props.date}/>
             <div className={classes.tags}>
-            {this.statusTag(classes)}
+              {this.statusTag(classes)}
             </div>
             <div className={classes.image}>
             <Image src={this.state.image} width={576} height={324}/>
@@ -113,7 +112,7 @@ class WorksContents extends React.Component<Props, State> {
 
             </CardActions>
           </Card>
-        </a>
+        </Link>
       </Box>
     )
   }

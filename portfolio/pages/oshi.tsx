@@ -6,7 +6,7 @@ export default function Oshi({ setTheme, isTheme }: ThemeProps) {
   return (
     <div>
       <Page titleName="Oshi" setTheme={setTheme} isTheme={isTheme} >
-        <Undone />
+        <Undone text="このページは現在作成中です。" />
       </Page>
     </div>
   )

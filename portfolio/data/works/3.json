@@ -1,12 +1,31 @@
 {
   "title": "TDUメーカー",
-  "explanation": "Reactの勉強ついでにと、ネタで作ったもの。「東京電機大学」の文字をランダムで表示する。さらにツイート可能。変換する文字は変更可能であるが分かりづらいためあまり知られていない。",
+  "explanation": "「東京電機大学」の文字をランダムで表示する。",
   "tag": [
     "TypeScript",
     "React",
     "Vercel"
   ],
-  "imageSrc": "/works/TDU.png",
-  "projectPageLink": "https://github.com/yuto51942/tokyo-denki-univ",
+  "imgSrc": [
+    "/works/TDU.png"
+  ],
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/yuto51942/tokyo-denki-univ"
+    },
+    {
+      "host": "ホームページ",
+      "url": "https://tokyo-denki-univ.vercel.app/"
+    }
+  ],
+  "text": [
+    "## どういうものか",
+    "「東京電機大学」の文字をランダムで表示する。",
+    "React始めたてのころ、なにかページを作ってみたいなと思って作ったもの。",
+    "当時、Twitterで「東京電機大学」をランダムにしてツイートするBotが流行っておりその流れに乗りたかった。",
+    "",
+    "実は、変換する文字は書き換えることが可能であり、「東京大学」にしてもばれないんじゃないかな？"
+  ],
   "date": "2020年 12月"
 }

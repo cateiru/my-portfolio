@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: '3rem'
     },
     divider: {
-      width: '80%'
+      width: '80%',
+      backgroundColor: theme.palette.text.secondary
     }
   }),
 )

@@ -6,7 +6,7 @@ export default function Skills({ setTheme, isTheme }: ThemeProps) {
   return (
     <div>
       <Page titleName="Skills" setTheme={setTheme} isTheme={isTheme} >
-        <Undone />
+        <Undone text="このページは現在作成中です。" />
       </Page>
     </div>
   )
