@@ -95,6 +95,8 @@ class WorksContents extends React.Component<Props, State> {
           <Card raised={!this.state.mouseOn}
                 onMouseEnter={() => {this.setState(() => ({mouseOn: true}))}}
                 onMouseLeave={() => {this.setState(() => ({mouseOn: false}))}}
+                onTouchStart={() => {this.setState(() => ({mouseOn: true}))}}
+                onTouchEnd={() => {this.setState(() => ({mouseOn: false}))}}
           >
             <CardHeader title={this.props.title} subheader={this.props.date}/>
             <div className={classes.tags}>
