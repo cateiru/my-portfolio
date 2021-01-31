@@ -41,6 +41,15 @@ const useStyles = makeStyles((theme: Theme) =>
         fontSize: '2rem',
       },
     },
+    date: {
+      margin: '2.5rem 0 1rem 0',
+      fontSize: '1rem',
+      color: theme.palette.text.secondary,
+
+      '@media only screen and (max-device-width: 600px)': {
+        margin: '0 0 1rem 0',
+      },
+    },
     textArea: {
       margin: '0'
     },
@@ -185,8 +194,13 @@ export default function WorkDetails(props: Props) {
           <ArrowBackIcon />
         </Fab>
       </Link>
-      <div className={classes.title} >
-        {props.docData.title}
+      <div className={classes.wrapper} key="titleAndDate">
+        <div className={classes.title} >
+          {props.docData.title}
+        </div>
+        <div className={classes.date}>
+          {props.docData.date} 作成
+        </div>
       </div>
       <div className={classes.wrapper} key="tagAndLink">
         <div className={classes.tags} key="tag">
