@@ -46,7 +46,7 @@ function works(props: InferGetStaticPropsType<typeof getStaticProps>) {
         <Box className={classes.root}>
         <Grid container spacing={5} direction="row" justify="space-around" alignItems="flex-start" className={classes.guid} >
           { works.map((element) => (
-            <Grid item xs="auto" key={`grid_${element.id}`}>
+            <Grid item xs="auto" key={`grid_${element.id}`} id={element.id}>
               <WorksContents key={element.id} title={element.title} explanation={element.explanation}
                 tag={element.tag} imageSrc={element.imageSrc} projectPageLink={element.projectPageLink}
                 date={element.date} />

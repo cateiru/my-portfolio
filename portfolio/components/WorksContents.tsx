@@ -17,7 +17,7 @@ interface Props extends WithStyles<typeof styles> {
   tag: string[],
   imageSrc: string,
   projectPageLink: string,
-  date: string
+  date: string,
 }
 
 interface State {
@@ -101,7 +101,7 @@ class WorksContents extends React.Component<Props, State> {
               {this.statusTag(classes)}
             </div>
             <div className={classes.image}>
-            <Image src={this.state.image} width={576} height={324}/>
+              <Image src={this.state.image} width={576} height={324}/>
             </div>
             <CardContent >
               <Typography variant="body2" color="textSecondary" component="p" className={classes.explanation}>

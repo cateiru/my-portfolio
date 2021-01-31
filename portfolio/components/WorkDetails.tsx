@@ -17,7 +17,8 @@ import Button from '@material-ui/core/Button'
 
 
 interface Props {
-  docData: WorkJsonData
+  docData: WorkJsonData,
+  id: string,
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -189,7 +190,7 @@ export default function WorkDetails(props: Props) {
 
   return (
     <div className={classes.root} key="root">
-      <Link href="/works">
+      <Link href={`/works#${props.id}`} scroll={false}>
         <Fab color="secondary" size="medium" className={classes.backButton}>
           <ArrowBackIcon />
         </Fab>

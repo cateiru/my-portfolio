@@ -11,7 +11,7 @@ function Work(props: InferGetStaticPropsType<typeof getStaticProps>){
   return (
     <div key={props.id}>
       <Page titleName="Works" setTheme={props.setTheme as SetTheme} isTheme={props.isTheme as IsTheme} >
-        <WorkDetails docData={props.data} />
+        <WorkDetails docData={props.data} id={props.id} />
       </Page>
     </div>
   )
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const dirPath = path.join(process.cwd(), 'data', 'works', `${params.id as string}.json`)
   const fileData: WorkJsonData = JSON.parse(fs.readFileSync(dirPath, 'utf-8'))
 
-  return { props: { data: fileData } }
+  return { props: { data: fileData, id: params.id } }
 }
 
 export default Work
