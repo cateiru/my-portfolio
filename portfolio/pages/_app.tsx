@@ -14,15 +14,6 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import { GAToken, pageview, event} from '../utils/ga'
 
 
-function initGA(token) {
-  ReactGA.initialize(token)
-}
-
-function logPageView() {
-  ReactGA.set({ page: window.location.pathname })
-  ReactGA.pageview(window.location.pathname)
-}
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
