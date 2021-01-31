@@ -19,14 +19,14 @@ export interface WorkJsonData {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     highlight: {
-      fontWeight: 700,
+      fontWeight: 500,
       borderBottom: `solid 2px ${theme.palette.secondary.main}`,
     },
     header: {
       fontSize: '1.7rem',
       margin: '2rem 0 .5rem 0',
       fontFamily: "'M PLUS 1p', sans-serif",
-      fontWeight: 300,
+      fontWeight: 400,
 
       '@media only screen and (max-device-width: 600px)': {
         clear: 'both'
@@ -36,10 +36,14 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: '1rem',
       wordWrap: 'break-word',
       margin: '0 0 0 0',
-      lineHeight: '1.6',
+      lineHeight: '2.5rem',
+      fontWeight: 300,
+      letterSpacing: '.1rem',
 
       '@media only screen and (max-device-width: 600px)': {
-        clear: 'both'
+        clear: 'both',
+        letterSpacing: '0',
+        lineHeight: '1.8rem',
       },
     },
     line: {
@@ -47,9 +51,6 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: theme.palette.text.secondary,
       width: '300px',
     },
-    br: {
-      // margin: '1rem 0 0 0'
-    }
   }),
 )
 
@@ -92,15 +93,15 @@ function analysisText(index: number, text: string){
   if(text === '') {
     return (
     <React.Fragment key={index}>
-      <br className={classes.br} />
+      <p className={classes.text}><br/></p>
     </React.Fragment>
   )
   }
   else if(isHeader) {
     return (
       <React.Fragment key={index}>
-        <br className={classes.br} />
         <p className={classes.header}>
+          <br />
           {highlightText}
         </p>
         <Divider className={classes.line} />
