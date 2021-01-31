@@ -1,5 +1,6 @@
 
 import Head from 'next/head'
+import { title } from 'process'
 
 export default function PageHead() {
   let thisURL = ''
@@ -11,7 +12,6 @@ export default function PageHead() {
   return (
     <Head>
       <meta charSet="utf-8" />
-      <title>YutoWatanabe 渡邊悠人 Cateiru | ポートフォリオ</title>
       <meta name="description" content="渡邊悠人のポートフォリオ" />
       <meta name="author" content="Copyright © 2021 Yuto Watanabe" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -41,6 +41,21 @@ export default function PageHead() {
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;500&family=Noto+Sans+JP:wght@500;700&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet" />
 
+    </Head>
+  )
+}
+
+export function HeadTitle( { titleName }: { titleName: string} ) {
+  if(titleName.toLocaleLowerCase() === 'about'){
+    return (
+      <Head>
+        <title>YutoWatanabe | 渡邊悠人 ポートフォリオ</title>
+      </Head>
+    )
+  }
+  return (
+    <Head>
+      <title>{titleName} | 渡邊悠人のポートフォリオ</title>
     </Head>
   )
 }

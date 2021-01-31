@@ -2,6 +2,7 @@ import Page from '../components/Page'
 import Undone from '../components/Undone'
 import ThemeProps from '../utils/themeProps'
 
+
 export default function Oshi({ setTheme, isTheme }: ThemeProps) {
   return (
     <div>

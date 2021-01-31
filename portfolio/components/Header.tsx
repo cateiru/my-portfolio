@@ -26,6 +26,7 @@ import NoSsr from '@material-ui/core/NoSsr'
 import { links } from '../utils/pageName'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import ThemeProps, { SetTheme, IsTheme } from '../utils/themeProps'
+import { HeadTitle } from './PageHead'
 
 interface Props extends ThemeProps {
   titleName: string
@@ -153,6 +154,7 @@ function ElevateAppBar(props: Props) {
 
   return (
     <React.Fragment>
+      <HeadTitle titleName={props.titleName} />
       <ElevationScroll>
         <AppBar>
           <Toolbar>
