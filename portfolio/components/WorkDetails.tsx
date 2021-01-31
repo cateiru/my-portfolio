@@ -135,7 +135,7 @@ function ImageView({ images }: { images: string[]}) {
 
   return (
     <Carousel showThumbs showIndicators infiniteLoop
-    showStatus={false} swipeable useKeyboardArrows dynamicHeight className={classes.carousel}>
+    showStatus={false} swipeable={false} useKeyboardArrows dynamicHeight className={classes.carousel}>
       {images.map((image, index) => (
         <div key={index} >
           <img src={image} key={index}/>
