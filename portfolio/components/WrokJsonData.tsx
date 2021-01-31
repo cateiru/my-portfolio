@@ -35,14 +35,15 @@ const useStyles = makeStyles((theme: Theme) =>
     text: {
       fontSize: '1rem',
       wordWrap: 'break-word',
-      margin: '.25rem 0 0 0',
-      lineHeight: '1.5',
+      margin: '0 0 0 0',
+      lineHeight: '1.6',
 
       '@media only screen and (max-device-width: 600px)': {
         clear: 'both'
       },
     },
     line: {
+      margin: '0 0 1rem 0',
       backgroundColor: theme.palette.text.secondary,
       width: '300px',
     },
@@ -98,6 +99,7 @@ function analysisText(index: number, text: string){
   else if(isHeader) {
     return (
       <React.Fragment key={index}>
+        <br className={classes.br} />
         <p className={classes.header}>
           {highlightText}
         </p>

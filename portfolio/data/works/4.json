@@ -1,6 +1,6 @@
 {
   "title": "うんちメーカー",
-  "explanation": "形態素解析により名詞を「うんち」に変換するAPIをPython/Flaskで作成し、Next.jsで作成したページからそのAPIをリクエストすることで翻訳サイトのような変換サイトを作成。今考えると「にゃあ」に変換したほうが個人的に需要あったな…",
+  "explanation": "文章を形態素解析して名詞をすべてうんちに変換するサイト。",
   "tag": [
     "Python",
     "形態素解析",
@@ -17,8 +17,20 @@
     {
       "host": "github",
       "url": "https://github.com/yuto51942/unchi-maker-site"
+    },
+    {
+      "host": "ホームページ",
+      "url": "https://unchi-maker-site.cateiru.vercel.app/"
     }
   ],
-  "text": [],
+  "text": [
+    "## どういうものか",
+    "文章を形態素解析して名詞をすべて**うんち**に変換する。",
+    "フロントエンドとバックエンドのAPI通信をやってみたくて作ったもので、バックエンドはPython/Flaskを使用してAPIを作成し、フロントエンドではReact/Next.jsを使用して通信している。",
+    "## フロントエンド",
+    "Next.jsをしようしている。API通信はfetchを使用している。Vercelにホストしている。",
+    "## バックエンド",
+    "Pythonを使用しており、Janomeという形態素解析ライブラリで文章を形態素解析している。WebフレームワークはFlaskを採用しておりこちらもVercelにホストしている。"
+  ],
   "date": "2020年 12月"
 }
