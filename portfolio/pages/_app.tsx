@@ -7,11 +7,11 @@ import { CookiesProvider } from 'react-cookie'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import { useRouter } from 'next/router'
 import * as React from 'react'
-import ReactGA from 'react-ga'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useCookies } from 'react-cookie'
 import selectTheme from '../components/Theme'
 import { ThemeProvider } from '@material-ui/core/styles'
+import { GAToken, pageview, event} from '../utils/ga'
 
 
 function initGA(token) {
@@ -42,8 +42,6 @@ function setTheme(prefersDarkMode: boolean, cookieTheme: string) {
 
 export default function App({Component, pageProps}) {
   const classes = useStyles()
-  const router = useRouter()
-  const GAToken = process.env.NEXT_PUBLIC_GA_TOKEN
   const [cookies, setCookie, removeCookie] = useCookies(['isTheme'])
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', {noSsr: true})
   const [isTheme, setIsTheme] = React.useState(setTheme(prefersDarkMode, cookies.isTheme))
@@ -60,14 +58,6 @@ export default function App({Component, pageProps}) {
   }, [prefersDarkMode])
 
   React.useEffect(() => {
-    initGA(GAToken)
-    // `routeChangeComplete` won't run for the first page load unless the query string is
-    // hydrated later on, so here we log a page view if this is the first render and
-    // there's no query string
-    if (!router.asPath.includes('?')) {
-      logPageView()
-    }
-
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -75,11 +65,14 @@ export default function App({Component, pageProps}) {
     }
   }, [])
 
+  const router = useRouter()
   React.useEffect(() => {
-    // Listen for page changes after a navigation or when the query changes
-    router.events.on('routeChangeComplete', logPageView)
+    const handleRouteChange = (url: string) => {
+      pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
-      router.events.off('routeChangeComplete', logPageView)
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
 
