@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     figure: {
       width: '50%',
-      float: 'left',
-      margin: '1rem 2rem 1rem 0',
+      float: 'right',
+      margin: '1rem 0 1rem 2rem',
 
       '@media only screen and (max-device-width: 1300px)': {
         width: '50%',

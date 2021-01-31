@@ -22,9 +22,10 @@ const useStyles = makeStyles((theme: Theme) =>
       borderBottom: `solid 2px ${theme.palette.secondary.main}`,
     },
     header: {
-      fontSize: '2rem',
-      fontWeight: 700,
-      margin: '1rem 0 .5rem 0',
+      fontSize: '1.7rem',
+      margin: '2rem 0 .5rem 0',
+      fontFamily: "'M PLUS 1p', sans-serif",
+      fontWeight: 300,
 
       '@media only screen and (max-device-width: 600px)': {
         clear: 'both'
@@ -33,6 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
     text: {
       fontSize: '1rem',
       wordWrap: 'break-word',
+      margin: '.25rem 0 0 0',
+      lineHeight: '1.5',
 
       '@media only screen and (max-device-width: 600px)': {
         clear: 'both'
@@ -40,6 +43,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     line: {
       backgroundColor: theme.palette.text.secondary,
+      width: '300px',
+    },
+    br: {
+      // margin: '1rem 0 0 0'
     }
   }),
 )
@@ -80,7 +87,14 @@ function analysisText(index: number, text: string){
     }
   })
 
-  if(isHeader) {
+  if(text === '') {
+    return (
+    <React.Fragment key={index}>
+      <br className={classes.br} />
+    </React.Fragment>
+  )
+  }
+  else if(isHeader) {
     return (
       <React.Fragment key={index}>
         <p className={classes.header}>
