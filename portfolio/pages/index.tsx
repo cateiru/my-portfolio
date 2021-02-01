@@ -64,7 +64,7 @@ const jumpButton: React.FC<Props> = ({ classes }: Props) => (
           return (
             <Grid item xs className={classes.item} key={element.name}>
               <NextLink href={`/${element.name}`}>
-                <Button variant="outlined" className={classes.button}>
+                <Button className={classes.button}>
                   {element.name.toUpperCase()}
                 </Button>
               </NextLink>
