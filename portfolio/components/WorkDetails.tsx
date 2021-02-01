@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
       '@media only screen and (max-device-width: 1024px)': {
         display: 'block',
+        flexDirection: 'row'
       }
     },
     backButton: {
@@ -68,28 +69,22 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     imageBox: {
       width: '50%',
-      float: 'left',
-      margin: '1rem 0 1rem 2rem',
+      margin: '5rem 0 1rem 2rem',
 
-      '@media only screen and (max-device-width: 1300px)': {
-        width: '50%',
-        margin: '0 10px 0 10px',
-        position: 'relative',
-      },
       '@media only screen and (max-device-width: 1024px)': {
         width: '100%',
-        position: 'relative',
+        marginTop: '1rem',
         marginLeft: 'auto',
         marginRight: 'auto',
       },
     },
     text: {
       width: '50%',
-      margin: '1rem 2rem 0 1rem',
+      margin: '0rem 2rem 0 1rem',
 
       '@media only screen and (max-device-width: 1024px)': {
         width: 'auto',
-        margin: '1rem 3rem 0 3rem',
+        margin: '2rem 3rem 0 3rem',
       },
       '@media only screen and (max-device-width: 600px)': {
         width: 'auto',

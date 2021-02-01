@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     header: {
       fontSize: '1.7rem',
-      margin: '2rem 0 .5rem 0',
+      margin: '4rem 0 .5rem 0',
       fontFamily: "'M PLUS 1p', sans-serif",
       fontWeight: 400,
 
@@ -101,7 +101,6 @@ function analysisText(index: number, text: string){
     return (
       <React.Fragment key={index}>
         <p className={classes.header}>
-          <br />
           {highlightText}
         </p>
         <Divider className={classes.line} />
