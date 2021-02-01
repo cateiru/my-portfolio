@@ -5,6 +5,7 @@ export interface SendData {
   calendar: {
     weeks: {
       firstDay: string
+      isMonthStart: boolean
 
       days: {
         contributionLevel: 0 | 1 | 2 | 3 | 4
