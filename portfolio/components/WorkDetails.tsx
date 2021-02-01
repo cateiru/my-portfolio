@@ -52,7 +52,13 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     textArea: {
-      margin: '0'
+      margin: '0',
+      display: 'flex',
+      flexDirection: 'row-reverse',
+
+      '@media only screen and (max-device-width: 1024px)': {
+        display: 'block',
+      }
     },
     backButton: {
       position: 'fixed',
@@ -60,9 +66,9 @@ const useStyles = makeStyles((theme: Theme) =>
       left: theme.spacing(2),
       zIndex: 1100
     },
-    figure: {
+    imageBox: {
       width: '50%',
-      float: 'right',
+      float: 'left',
       margin: '1rem 0 1rem 2rem',
 
       '@media only screen and (max-device-width: 1300px)': {
@@ -75,6 +81,19 @@ const useStyles = makeStyles((theme: Theme) =>
         position: 'relative',
         marginLeft: 'auto',
         marginRight: 'auto',
+      },
+    },
+    text: {
+      width: '50%',
+      margin: '1rem 2rem 0 1rem',
+
+      '@media only screen and (max-device-width: 1024px)': {
+        width: 'auto',
+        margin: '1rem 3rem 0 3rem',
+      },
+      '@media only screen and (max-device-width: 600px)': {
+        width: 'auto',
+        margin: '1rem 1rem 0 1rem',
       },
     },
     carousel: {
@@ -214,12 +233,14 @@ export default function WorkDetails(props: Props) {
         </div>
       </div>
       <div className={classes.textArea} key="textArea">
-        <figure className={classes.figure}>
+        <div className={classes.imageBox}>
           <Box boxShadow={10}>
             <ImageView images={props.docData.imgSrc} />
           </Box>
-        </figure>
-        <ChangeText texts={props.docData.text} />
+        </div>
+        <div className={classes.text}>
+          <ChangeText texts={props.docData.text} />
+        </div>
       </div>
     </div>
   )
