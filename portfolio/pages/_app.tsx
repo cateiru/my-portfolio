@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       overflow: 'hidden',
+      fontFamily: "'Noto Sans JP', sans-serif",
+      fontWeight: 500,
     }
   })
 )

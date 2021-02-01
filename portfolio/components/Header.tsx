@@ -27,6 +27,7 @@ import { links } from '../utils/pageName'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import ThemeProps, { SetTheme, IsTheme } from '../utils/themeProps'
 import { HeadTitle } from './PageHead'
+import Tooltip from '@material-ui/core/Tooltip'
 
 interface Props extends ThemeProps {
   titleName: string
@@ -146,12 +147,6 @@ function ElevateAppBar(props: Props) {
   const [cookies, setCookie, removeCookie] = useCookies(['isDark'])
   const [drawerOpen, setDrawer] = React.useState(false)
 
-  // React.useEffect(() => {
-  //   if(typeof cookies.isTheme === 'undefined'){
-  //     setCookie('isTheme', defaultTheme, { path: '/' , sameSite: 'strict' })
-  //   }
-  // }, [prefersDarkMode])
-
   return (
     <React.Fragment>
       <HeadTitle titleName={props.titleName} />
@@ -165,15 +160,19 @@ function ElevateAppBar(props: Props) {
                 {props.titleName}
               </Typography>
             <a href="https://github.com/yuto51942/my-portfolio" target="_blank" rel="noopener noreferrer" className={classes.githubLink}>
-              <IconButton>
-                <GitHubIcon />
-              </IconButton>
+              <Tooltip title="プロジェクトページに移動" >
+                <IconButton aria-label="jump github page">
+                  <GitHubIcon />
+                </IconButton>
+              </Tooltip>
             </a>
-            <IconButton onClick={() => (changeTheme(props.isTheme, props.setTheme, setCookie))}>
-              <NoSsr>
-                {(props.isTheme === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
-              </NoSsr>
-            </IconButton>
+            <Tooltip title={props.isTheme === 'dark' ? 'ライトモードに変更' : 'ダークモードに変更' }>
+              <IconButton onClick={() => (changeTheme(props.isTheme, props.setTheme, setCookie))} aria-label="change theme">
+                <NoSsr>
+                  {(props.isTheme === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
+                </NoSsr>
+              </IconButton>
+            </Tooltip>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
@@ -184,7 +183,7 @@ function ElevateAppBar(props: Props) {
 
       <Toolbar id="back-to-top-anchor" />
       <ScrollTop>
-        <Fab color="secondary" size="medium" aria-label="scroll back to top">
+        <Fab color="secondary" size="medium" aria-label="ページのトップに戻る">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
