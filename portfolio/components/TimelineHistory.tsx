@@ -27,6 +27,7 @@ const styles = (theme: Theme) =>
     text: {
       fontSize: '1rem',
       fontWeight: 500,
+      color: theme.palette.primary.contrastText,
 
       '& span': {
         fontWeight: 700,
@@ -34,6 +35,10 @@ const styles = (theme: Theme) =>
         borderBottom: `solid 2px ${theme.palette.secondary.main}`,
       }
     },
+    date: {
+      fontSize: '1rem',
+      fontWeight: 500,
+    }
   })
 
 interface Props extends WithStyles<typeof styles> { }
@@ -55,7 +60,7 @@ class TimelineHistory extends React.Component<Props, {}> {
           return (
             <TimelineItem key={index}>
               <TimelineOppositeContent>
-                <Typography color="textSecondary" className={classes.text}>{element.date}</Typography>
+                <Typography color="textSecondary" className={classes.date}>{element.date}</Typography>
               </TimelineOppositeContent>
               <TimelineSeparator>
                 <TimelineDot variant="outlined">
