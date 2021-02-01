@@ -14,7 +14,7 @@ import Snackbar from '@material-ui/core/Snackbar'
 import axios from 'axios'
 import Backdrop from '@material-ui/core/Backdrop'
 import CircularProgress from '@material-ui/core/CircularProgress'
-
+import Divider from '@material-ui/core/Divider'
 
 
 interface State {
@@ -56,11 +56,9 @@ const styles = (theme: Theme) =>
       marginBottom: '3rem'
     },
     dialogText: {
-      fontFamily: "'Noto Sans JP', sans-serif",
       fontWeight: 500,
     },
     dialogTitle: {
-      fontFamily: "'M PLUS 1p', sans-serif",
       fontWeight: 400,
     },
     inputBox: {
@@ -308,6 +306,7 @@ class ContactForm extends React.Component<Props, State> {
             </pre>
           </DialogContentText>
         </DialogContent>
+        <Divider />
         <DialogActions>
           <Button onClick={() => {this.setState(() => ({confirmation: false}))}} >
             キャンセル
