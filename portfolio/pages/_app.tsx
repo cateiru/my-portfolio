@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import * as React from 'react'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useCookies } from 'react-cookie'
-import selectTheme from '../components/Theme'
+import selectTheme from '../utils/theme'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { GAToken, pageview, event} from '../utils/ga'
 
