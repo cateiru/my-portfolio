@@ -107,7 +107,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     bar: {
-
+      '& text': {
+        fill: theme.palette.text.secondary,
+        fontWeight: 300,
+      }
     }
 
   })
