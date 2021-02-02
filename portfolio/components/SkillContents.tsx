@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       '@media only screen and (max-device-width: 480px)': {
         fontSize: '10rem',
+        lineHeight: '10rem',
         margin: '2rem 1rem 0 1rem',
       },
 
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
       '@media only screen and (max-device-width: 600px)': {
         marginBottom: '6em',
+        fontSize: '.7rem',
       },
 
     },
@@ -77,6 +79,12 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: '5%',
       marginBottom: '5%',
       width: '70%',
+      backgroundColor: theme.palette.text.secondary,
+    },
+    link: {
+      color : 'inherit',
+      textDecoration: 'none',
+      outline: 'none',
     },
     page: {
     },
@@ -89,7 +97,7 @@ function GrassGraph({ data, theme, startIndex, startMonth }: { data: sendDataCal
 
   const colorChanger = theme === 'dark' ? 0 : 5
 
-  const grassColor = ['#303030', '#486163', '#447d82', '#42a4ad', '#2fcfde', '#f0f0f0', '#c7eef2', '#97e7f0', '#61c4cf', '#27838c']
+  const grassColor = ['#303030', '#415254', '#46747a', '#37a0ad', '#1cdfed', '#f0f0f0', '#c7eef2', '#97e7f0', '#61c4cf', '#27838c']
 
   const monthName = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
   const monthNameWidth = [42, 42, 42, 55, 42, 55, 42, 42, 55, 42, 42 ,55]
@@ -144,6 +152,7 @@ function GrassGraph({ data, theme, startIndex, startMonth }: { data: sendDataCal
   )
 }
 
+
 export default function SkillsPage({ isTheme, data }: { isTheme: string, data: SendData }) {
   const classes = useStyles()
 
@@ -159,10 +168,12 @@ export default function SkillsPage({ isTheme, data }: { isTheme: string, data: S
           </p>
         </div>
         <div className={classes.grass}>
-          <NoSsr>
-            <GrassGraph data={data.calendar.weeks} theme={isTheme} startIndex={data.calendar.startIndex}
-                        startMonth={data.calendar.startMonth}/>
-          </NoSsr>
+          <a href="https://github.com/yuto51942" target="_blank" rel="noopener noreferrer" className={classes.link}>
+            <NoSsr>
+              <GrassGraph data={data.calendar.weeks} theme={isTheme} startIndex={data.calendar.startIndex}
+                          startMonth={data.calendar.startMonth}/>
+            </NoSsr>
+          </a>
         </div>
       </div>
       <Center className={classes.line}>
