@@ -2,12 +2,12 @@ import React from 'react'
 import Page from '../../components/Page'
 import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType} from 'next'
 import { WorkJsonData } from '../../components/WrokJsonData'
-import { SetTheme, IsTheme } from '../../utils/themeProps'
+import ThemeProps, { SetTheme, IsTheme } from '../../utils/themeProps'
 import WorkDetails from '../../components/WorkDetails'
 import fs from 'fs'
 import path from 'path'
 
-function Work(props: InferGetStaticPropsType<typeof getStaticProps>){
+function Work(props: InferGetStaticPropsType<typeof getStaticProps> & ThemeProps){
   return (
     <div key={props.id}>
       <Page titleName="Works" setTheme={props.setTheme as SetTheme} isTheme={props.isTheme as IsTheme} >

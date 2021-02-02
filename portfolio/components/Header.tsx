@@ -166,13 +166,13 @@ function ElevateAppBar(props: Props) {
                 </IconButton>
               </Tooltip>
             </a>
-            <Tooltip title={props.isTheme === 'dark' ? 'ライトモードに変更' : 'ダークモードに変更' }>
-              <IconButton onClick={() => (changeTheme(props.isTheme, props.setTheme, setCookie))} aria-label="change theme">
-                <NoSsr>
-                  {(props.isTheme === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
-                </NoSsr>
-              </IconButton>
-            </Tooltip>
+            <NoSsr>
+              <Tooltip title={props.isTheme === 'dark' ? 'ライトモードに変更' : 'ダークモードに変更' }>
+                <IconButton onClick={() => (changeTheme(props.isTheme, props.setTheme, setCookie))} aria-label="change theme">
+                    {(props.isTheme === 'dark')? (<Brightness7Icon />) : (<Brightness4Icon />)}
+                </IconButton>
+              </Tooltip>
+            </NoSsr>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

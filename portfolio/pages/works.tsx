@@ -9,6 +9,7 @@ import fs from 'fs'
 import path from 'path'
 import { SetTheme, IsTheme } from '../utils/themeProps'
 import { WorkJsonData } from '../components/WrokJsonData'
+import ThemeProps from '../utils/themeProps'
 // import Undone from '../components/Undone'
 
 interface _WorkJsonData {
@@ -36,7 +37,7 @@ interface WorkData extends _WorkJsonData {
   id: string
 }
 
-function works(props: InferGetStaticPropsType<typeof getStaticProps>) {
+function works(props: InferGetStaticPropsType<typeof getStaticProps> & ThemeProps) {
   const works: WorkData[] = props.works
   const classes = useStyles()
 
