@@ -3,56 +3,61 @@ export interface SendData {
   isHalloween: boolean
 
   calendar: {
-    weeks: {
-      firstDay: string
-      isMonthStart: boolean
-
-      days: {
-        contributionLevel: 0 | 1 | 2 | 3 | 4
-        date: string
-        weekday: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      }[]
-    }[]
+    weeks: sendDataCalendar[]
   }
 
-  languages: {
-    langName: string
-    useRepoCount: number
-    ratio: number
-    rank: number
-    allSize: number
-  }[]
+  languages: language[]
+}
+
+export interface language {
+  langName: string
+  useRepoCount: number
+  rank: number
+  allSize: number
+}
+
+export interface sendDataCalendar {
+    firstDay: string
+    days: sendDataCalendarDays[]
+}
+
+export interface sendDataCalendarDays {
+  contributionLevel: 0 | 1 | 2 | 3 | 4
+  date: string
+  weekday: 0 | 1 | 2 | 3 | 4 | 5 | 6
 }
 
 export interface GithubGetData {
-  user: {
-    contributionsCollection: {
-      contributionCalendar: {
-        isHalloween: boolean
-        totalContributions: number
-        weeks: {
-          firstDay: string
-          contributionDays: {
-            contributionLevel: string
-            date: string
-            weekday: number
-          }[]
-        }[]
-      }
-    }
-    repositories: {
-      nodes: {
-        name: string
-        languages: {
-          edges: {
-            size: number
-            node: {
-              color: string
-              name: string
-            }
+  data: {
+    user: {
+      contributionsCollection: {
+        contributionCalendar: {
+          isHalloween: boolean
+          totalContributions: number
+          weeks: {
+            firstDay: string
+            contributionDays: {
+              contributionLevel: string
+              date: string
+              weekday: number
+            }[]
           }[]
         }
-      }[]
+      }
+      repositories: {
+        nodes: {
+          name: string
+          languages: {
+            edges: {
+              size: number
+              node: {
+                color: string
+                name: string
+              }
+            }[]
+          }
+        }[]
+      }
     }
   }
 }
