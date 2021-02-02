@@ -262,10 +262,8 @@ export default function SkillsPage({  data }: { data: SendData }) {
           </p>
         </div>
         <div className={classes.grass}>
-          {/* <a href="https://github.com/yuto51942" target="_blank" rel="noopener noreferrer" className={classes.link}> */}
-            <GrassGraph data={data.calendar.weeks} startIndex={data.calendar.startIndex}
-                        startMonth={data.calendar.startMonth}/>
-          {/* </a> */}
+          <GrassGraph data={data.calendar.weeks} startIndex={data.calendar.startIndex}
+                      startMonth={data.calendar.startMonth}/>
         </div>
       </div>
       <Center className={classes.line}>
