@@ -5,13 +5,39 @@ import NoSsr from '@material-ui/core/NoSsr'
 import Divider from '@material-ui/core/Divider'
 import Center from './Center'
 import { BarChart, Bar, YAxis, XAxis, Cell, ResponsiveContainer } from 'recharts'
+import { useInView } from 'react-intersection-observer'
 
 
 const useStyles = makeStyles((theme: Theme) =>{
   const isDark = theme.palette.type == 'dark'
   return createStyles({
-    contribution: {
+    title: {
       textAlign: 'center',
+    },
+    mostUseLang: {
+      fontFamily: "'Noto Sans JP', sans-serif",
+      fontSize: '9rem',
+      fontWeight: 900,
+      margin: '5% 2rem 0 2rem',
+
+      display: 'inline-block',
+      background: '-webkit-linear-gradient(45deg, #6372f2, #62c5f0 20%, #a8f590 90%)',
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
+
+      '@media only screen and (max-device-width: 1024px)': {
+        fontSize: '6.4rem',
+        margin: '5rem 2rem 0 2rem',
+      },
+      '@media only screen and (max-device-width: 600px)': {
+        fontSize: '4.9rem',
+        margin: '5rem 2rem 0 2rem',
+      },
+      '@media only screen and (max-device-width: 480px)': {
+        fontSize: '3.9rem',
+        lineHeight: '10rem',
+        margin: '2rem 1rem 0 1rem',
+      },
     },
     totalContribution: {
       fontSize: '15rem',
@@ -78,7 +104,7 @@ const useStyles = makeStyles((theme: Theme) =>{
       },
     },
     line: {
-      marginTop: '5%',
+      marginTop: '14%',
       marginBottom: '5%',
       width: '70%',
       backgroundColor: theme.palette.text.secondary,
@@ -104,7 +130,7 @@ const useStyles = makeStyles((theme: Theme) =>{
       },
       '@media only screen and (max-device-width: 480px)': {
         width: '300px',
-        height: '300px',
+        height: '450px',
       },
     },
     bar: {
@@ -127,7 +153,7 @@ const useStyles = makeStyles((theme: Theme) =>{
     },
     grassLv4: {
       fill: isDark? '#1cdfed' : '#27838c'
-    },
+    }
   })
 })
 
@@ -189,7 +215,7 @@ function GrassGraph({ data, startIndex, startMonth }: { data: sendDataCalendar[]
   )
 }
 
-function LanguagesGraph( { data }: {data: language[]} ) {
+function LanguagesGraph( { data, show }: {data: language[], show: boolean} ) {
   const classes = useStyles()
 
   return (
@@ -197,7 +223,7 @@ function LanguagesGraph( { data }: {data: language[]} ) {
       <BarChart width={1007} height={600} data={data} className={classes.bar} layout="vertical">
         <YAxis dataKey="langName" type="category" width={100} axisLine={false} tickLine={false} />
         <XAxis type="number" hide />
-        <Bar dataKey='allSize' barSize={17} >
+        <Bar dataKey='allSize' barSize={17} isAnimationActive={show} radius={10}>
           {data.map((v, i) => (
             <Cell fill={v.langColor} key={i} />
           ))}
@@ -210,16 +236,20 @@ function LanguagesGraph( { data }: {data: language[]} ) {
 
 export default function SkillsPage({  data }: { data: SendData }) {
   const classes = useStyles()
+  const { ref, inView, entry }= useInView({
+    threshold: 0,
+    triggerOnce: true
+  })
 
   return(
     <div>
       <div className={classes.page}>
-        <div className={classes.contribution}>
+        <div className={classes.title}>
           <p className={classes.totalContribution}>
             {data.totalContributions}
           </p>
           <p className={classes.details}>
-            Github トータルコントリビューション数
+            GitHub トータルコントリビューション数
           </p>
         </div>
         <div className={classes.grass}>
@@ -233,10 +263,23 @@ export default function SkillsPage({  data }: { data: SendData }) {
           <Divider />
       </Center>
       <div className={classes.page}>
+      <div className={classes.title}>
+        <p className={classes.mostUseLang}>
+          {data.languages[0].langName}
+        </p>
+        <div className={classes.details}>
+          <p>
+            GitHubで最も使用した言語
+          </p>
+          <p>
+          { data.languages[0].useRepoCount} 個のリポジトリで使用されました
+          </p>
+        </div>
+      </div>
         <Center>
           <NoSsr>
-            <div className={classes.graph}>
-              <LanguagesGraph data={data.languages} />
+            <div className={classes.graph} ref={ref}>
+              <LanguagesGraph data={data.languages} show={inView} />
             </div>
           </NoSsr>
         </Center>
