@@ -4,8 +4,10 @@ import SkillsPage from '../components/SkillContents'
 import ThemeProps from '../utils/themeProps'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { SendData, github } from '../utils/githubData'
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar'
+import MuiAlert from '@material-ui/lab/Alert'
+import ReactTooltip, { Type } from 'react-tooltip'
+import NoSsr from '@material-ui/core/NoSsr'
 
 
 export default function Skills({ setTheme, isTheme, data, isError }: ThemeProps & InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -19,6 +21,9 @@ export default function Skills({ setTheme, isTheme, data, isError }: ThemeProps 
             Githubから情報を取得できませんでした。
           </MuiAlert>
         </Snackbar>
+        <NoSsr>
+          <ReactTooltip type={isTheme === 'dark'? 'light' : 'dark'} />
+        </NoSsr>
         {isError? <div /> : <SkillsPage data={data as SendData} />}
       </Page>
     </div>

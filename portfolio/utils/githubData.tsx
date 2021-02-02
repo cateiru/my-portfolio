@@ -35,6 +35,7 @@ export interface sendDataCalendar {
 
 export interface sendDataCalendarDays {
   contributionLevel: 0 | 1 | 2 | 3 | 4
+  contributionCount: number
   date: string
   weekday: 0 | 1 | 2 | 3 | 4 | 5 | 6
 }
@@ -50,6 +51,7 @@ export interface GithubGetData {
             firstDay: string
             contributionDays: {
               contributionLevel: string
+              contributionCount: number
               date: string
               weekday: number
             }[]
@@ -121,6 +123,7 @@ export async function getGithub(): Promise<GithubGetData | undefined> {
               firstDay
               contributionDays {
                 contributionLevel
+                contributionCount
                 date
                 weekday
               }
@@ -192,6 +195,7 @@ export async function format(githubData: GithubGetData): Promise<SendData | unde
 
       days.push({
         contributionLevel: level,
+        contributionCount: day.contributionCount,
         date: day.date,
         weekday: day.weekday as 0 | 1 | 2 | 3 | 4 | 5 | 6
       })

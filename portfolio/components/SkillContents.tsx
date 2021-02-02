@@ -187,7 +187,16 @@ function GrassGraph({ data, startIndex, startMonth }: { data: sendDataCalendar[]
     const week = value.days.map((valueWeek, indexWeek) => {
 
       return (
-        <rect x={14} y={13*indexWeek} width={10} height={10} key={indexWeek} className={grassColor[valueWeek.contributionLevel]} rx={2}/>
+        <rect
+            x={14}
+            y={13*indexWeek}
+            width={10}
+            height={10}
+            key={indexWeek}
+            className={grassColor[valueWeek.contributionLevel]}
+            rx={2}
+            data-tip={`${valueWeek.contributionCount} contributions on ${valueWeek.date}`}
+        />
       )
     })
 
@@ -253,10 +262,10 @@ export default function SkillsPage({  data }: { data: SendData }) {
           </p>
         </div>
         <div className={classes.grass}>
-          <a href="https://github.com/yuto51942" target="_blank" rel="noopener noreferrer" className={classes.link}>
+          {/* <a href="https://github.com/yuto51942" target="_blank" rel="noopener noreferrer" className={classes.link}> */}
             <GrassGraph data={data.calendar.weeks} startIndex={data.calendar.startIndex}
                         startMonth={data.calendar.startMonth}/>
-          </a>
+          {/* </a> */}
         </div>
       </div>
       <Center className={classes.line}>
