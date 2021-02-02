@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const token = process.env.GITHUB_TOKEN
 
+let lastGetDate: number | undefined
+
 export interface SendData {
   totalContributions: number
   isHalloween: boolean
@@ -78,6 +80,20 @@ export async function github() {
 
   return formattedData
 }
+
+/**
+ * 過去に取得した日時を確認してそれが1日以上前の場合true、それ以外をfalseで返します。
+ */
+export async function checkCache(): Promise<boolean> {
+  const now = Date.now()
+
+  if (86400 < (now - lastGetDate)){
+    lastGetDate = now
+    return true
+  }
+  return false
+}
+
 
 /**
  * Github Graph QL api を使用してデータを取得
