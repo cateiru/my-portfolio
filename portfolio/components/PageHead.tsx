@@ -1,6 +1,5 @@
 
 import Head from 'next/head'
-import { title } from 'process'
 
 export default function PageHead() {
   let thisURL = ''
