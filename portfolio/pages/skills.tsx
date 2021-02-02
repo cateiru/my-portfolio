@@ -19,7 +19,7 @@ export default function Skills({ setTheme, isTheme, data, isError }: ThemeProps 
             Githubから情報を取得できませんでした。
           </MuiAlert>
         </Snackbar>
-        {isError? <div /> : <SkillsPage isTheme={isTheme} data={data as SendData} />}
+        {isError? <div /> : <SkillsPage data={data as SendData} />}
       </Page>
     </div>
   )

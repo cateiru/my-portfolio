@@ -7,8 +7,9 @@ import Center from './Center'
 import { BarChart, Bar, YAxis, XAxis, Cell, ResponsiveContainer } from 'recharts'
 
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles((theme: Theme) =>{
+  const isDark = theme.palette.type == 'dark'
+  return createStyles({
     contribution: {
       textAlign: 'center',
     },
@@ -111,17 +112,29 @@ const useStyles = makeStyles((theme: Theme) =>
         fill: theme.palette.text.secondary,
         fontWeight: 300,
       }
-    }
-
+    },
+    grassNone: {
+      fill: isDark? '#303030' : '#f0f0f0'
+    },
+    grassLv1: {
+      fill: isDark? '#415254' : '#c7eef2'
+    },
+    grassLv2: {
+      fill: isDark? '#46747a' : '#97e7f0'
+    },
+    grassLv3: {
+      fill: isDark? '#37a0ad' : '#61c4cf'
+    },
+    grassLv4: {
+      fill: isDark? '#1cdfed' : '#27838c'
+    },
   })
-)
+})
 
-function GrassGraph({ data, theme, startIndex, startMonth }: { data: sendDataCalendar[], theme: string, startIndex: number, startMonth: number }) {
+function GrassGraph({ data, startIndex, startMonth }: { data: sendDataCalendar[], startIndex: number, startMonth: number }) {
   const classes = useStyles()
 
-  const colorChanger = theme === 'dark' ? 0 : 5
-
-  const grassColor = ['#303030', '#415254', '#46747a', '#37a0ad', '#1cdfed', '#f0f0f0', '#c7eef2', '#97e7f0', '#61c4cf', '#27838c']
+  const grassColor = [classes.grassNone, classes.grassLv1, classes.grassLv2, classes.grassLv3, classes.grassLv4]
 
   const monthName = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
   const monthNameWidth = [42, 42, 42, 55, 42, 55, 42, 42, 55, 42, 42 ,55]
@@ -148,7 +161,7 @@ function GrassGraph({ data, theme, startIndex, startMonth }: { data: sendDataCal
     const week = value.days.map((valueWeek, indexWeek) => {
 
       return (
-        <rect x={14} y={13*indexWeek} width={10} height={10} key={indexWeek} fill={grassColor[valueWeek.contributionLevel+colorChanger]} rx={2}/>
+        <rect x={14} y={13*indexWeek} width={10} height={10} key={indexWeek} className={grassColor[valueWeek.contributionLevel]} rx={2}/>
       )
     })
 
@@ -195,7 +208,7 @@ function LanguagesGraph( { data }: {data: language[]} ) {
 }
 
 
-export default function SkillsPage({ isTheme, data }: { isTheme: string, data: SendData }) {
+export default function SkillsPage({  data }: { data: SendData }) {
   const classes = useStyles()
 
   return(
@@ -211,10 +224,8 @@ export default function SkillsPage({ isTheme, data }: { isTheme: string, data: S
         </div>
         <div className={classes.grass}>
           <a href="https://github.com/yuto51942" target="_blank" rel="noopener noreferrer" className={classes.link}>
-            <NoSsr>
-              <GrassGraph data={data.calendar.weeks} theme={isTheme} startIndex={data.calendar.startIndex}
-                          startMonth={data.calendar.startMonth}/>
-            </NoSsr>
+            <GrassGraph data={data.calendar.weeks} startIndex={data.calendar.startIndex}
+                        startMonth={data.calendar.startMonth}/>
           </a>
         </div>
       </div>
