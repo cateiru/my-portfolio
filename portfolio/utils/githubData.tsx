@@ -1,10 +1,5 @@
 import axios from 'axios'
 
-
-let lastGetDate: number | undefined
-
-let cacheData: SendData | undefined
-
 const token = process.env.GITHUB_TOKEN
 
 export interface SendData {
@@ -78,33 +73,10 @@ export interface GithubGetData {
 
 
 export async function github() {
-  let data: GithubGetData | undefined
-  let formattedData: SendData | undefined
-
-  if (await checkCache() || typeof cacheData === 'undefined') {
-    data = await getGithub()
-    formattedData = await format(data)
-
-    cacheData = formattedData
-
-  }else {
-    formattedData = cacheData
-  }
+  const data = await getGithub()
+  const formattedData = await format(data)
 
   return formattedData
-}
-
-/**
- * 過去に取得した日時を確認してそれが1日以上前の場合true、それ以外をfalseで返します。
- */
-export async function checkCache(): Promise<boolean> {
-  const now = Date.now()
-
-  if (86400 < (now - lastGetDate)){
-    lastGetDate = now
-    return true
-  }
-  return false
 }
 
 /**
@@ -161,7 +133,7 @@ export async function getGithub(): Promise<GithubGetData | undefined> {
 
     return response.data
   }catch(error) {
-    return
+    throw new Error(error)
   }
 }
 
