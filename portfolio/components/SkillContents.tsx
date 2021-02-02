@@ -1,9 +1,10 @@
 import React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import { SendData, sendDataCalendar } from '../utils/githubData'
+import { SendData, sendDataCalendar, language } from '../utils/githubData'
 import NoSsr from '@material-ui/core/NoSsr'
 import Divider from '@material-ui/core/Divider'
 import Center from './Center'
+import { BarChart, Bar, YAxis, XAxis, Cell, ResponsiveContainer } from 'recharts'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -88,6 +89,26 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     page: {
     },
+    graph: {
+      width: '800px',
+      height: '700px',
+
+      '@media only screen and (max-device-width: 1024px)': {
+        width: '600px',
+        height: '560px',
+      },
+      '@media only screen and (max-device-width: 600px)': {
+        width: '500px',
+        height: '450px',
+      },
+      '@media only screen and (max-device-width: 480px)': {
+        width: '300px',
+        height: '300px',
+      },
+    },
+    bar: {
+
+    }
 
   })
 )
@@ -152,6 +173,24 @@ function GrassGraph({ data, theme, startIndex, startMonth }: { data: sendDataCal
   )
 }
 
+function LanguagesGraph( { data }: {data: language[]} ) {
+  const classes = useStyles()
+
+  return (
+    <ResponsiveContainer width="100%" height="100%" minWidth={10} minHeight={10} >
+      <BarChart width={1007} height={600} data={data} className={classes.bar} layout="vertical">
+        <YAxis dataKey="langName" type="category" width={100} axisLine={false} tickLine={false} />
+        <XAxis type="number" hide />
+        <Bar dataKey='allSize' barSize={17} >
+          {data.map((v, i) => (
+            <Cell fill={v.langColor} key={i} />
+          ))}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  )
+}
+
 
 export default function SkillsPage({ isTheme, data }: { isTheme: string, data: SendData }) {
   const classes = useStyles()
@@ -180,9 +219,13 @@ export default function SkillsPage({ isTheme, data }: { isTheme: string, data: S
           <Divider />
       </Center>
       <div className={classes.page}>
-        <div>
-
-        </div>
+        <Center>
+          <NoSsr>
+            <div className={classes.graph}>
+              <LanguagesGraph data={data.languages} />
+            </div>
+          </NoSsr>
+        </Center>
       </div>
     </div>
   )

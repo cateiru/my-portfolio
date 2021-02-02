@@ -22,6 +22,7 @@ export interface SendData {
 
 export interface language {
   langName: string
+  langColor: string
   useRepoCount: number
   rank: number
   allSize: number
@@ -214,6 +215,7 @@ export async function format(githubData: GithubGetData): Promise<SendData | unde
           langName: langs.node.name,
           useRepoCount: 1,
           rank: 0,
+          langColor: langs.node.color,
           allSize: langs.size
         })
       }else {
