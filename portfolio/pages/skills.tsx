@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme: Theme) =>
         marginRight: 'auto',
       },
     },
+    userTry: {
+      margin: '3rem 1rem 3rem 1rem',
+    }
   })
 )
 
@@ -58,7 +61,7 @@ export default function Skills({ setTheme, isTheme, data }: ThemeProps & InferGe
           <p>My GitHub</p>
         </div>
         <SkillsPage data={data as SendData} />
-        <div>
+        <div className={classes.userTry}>
           <TryAnyUserForm text='あなたのGitHubアカウントで試す' initForm='' />
         </div>
       </Page>

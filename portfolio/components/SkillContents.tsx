@@ -266,21 +266,21 @@ export default function SkillsPage({ data }: { data: SendData }) {
       <div className={classes.page}>
       <div className={classes.title}>
         <p className={classes.mostUseLang}>
-          {data.languages[0].langName}
+          {data.languages.length === 0 ? 'No Data' : data.languages[0].langName}
         </p>
         <div className={classes.details}>
           <p>
             GitHubで最も使用した言語
           </p>
           <p>
-          { data.languages[0].useRepoCount} 個のリポジトリで使用されました
+          {data.languages.length === 0 ? 0 : data.languages[0].useRepoCount } 個のリポジトリで使用されました
           </p>
         </div>
       </div>
         <Center>
           <NoSsr>
             <div className={classes.graph} ref={ref}>
-              <LanguagesGraph data={data.languages} show={inView} />
+              {data.languages.length === 0 ? null : <LanguagesGraph data={data.languages} show={inView} />}
             </div>
           </NoSsr>
         </Center>

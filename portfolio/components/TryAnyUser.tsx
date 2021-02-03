@@ -25,12 +25,12 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: '1.7rem',
       margin: '1rem 1rem 2rem 1rem',
 
-      '@media only screen and (max-device-width: 600px)': {
-      },
       '@media only screen and (max-device-width: 480px)': {
-        fontSize: '1.3rem',
+        fontSize: '1.2rem',
         margin: '1rem 1rem 2rem 1rem',
-
+      },
+      '@media only screen and (max-device-width: 370px)': {
+        ontSize: '1rem',
       },
     }
   })
