@@ -11,12 +11,27 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     textArea: {
       width: '300px',
-      marginRight: '.5rem'
+      marginRight: '.5rem',
+
+      '@media only screen and (max-device-width: 480px)': {
+        width: '250px',
+      },
+      '@media only screen and (max-device-width: 370px)': {
+        width: '200px',
+      },
     },
     description: {
       fontWeight: 300,
       fontSize: '1.7rem',
-      margin: '1rem 1rem 2rem 1rem'
+      margin: '1rem 1rem 2rem 1rem',
+
+      '@media only screen and (max-device-width: 600px)': {
+      },
+      '@media only screen and (max-device-width: 480px)': {
+        fontSize: '1.3rem',
+        margin: '1rem 1rem 2rem 1rem',
+
+      },
     }
   })
 )

@@ -20,6 +20,15 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     backdrop: {
       zIndex: 1400
+    },
+    form: {
+      margin: '4rem 1rem 1rem 1rem',
+
+      '@media only screen and (max-device-width: 370px)': {
+        marginTop: '4rem',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      },
     }
   })
 )
@@ -60,8 +69,9 @@ export default function AnyUser({ setTheme, isTheme, name }: ThemeProps & InferG
         <Backdrop open={isLoad} className={classes.backdrop}>
           <CircularProgress color="secondary" />
         </Backdrop>
-
-        <TryAnyUserForm text="他のGitHubアカウントで試す" initForm={name} />
+        <div className={classes.form}>
+          <TryAnyUserForm text="他のGitHubアカウントで試す" initForm={name} />
+        </div>
         <div>
           {data? <SkillsPage data={data} /> : null}
         </div>
