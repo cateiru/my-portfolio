@@ -4,15 +4,22 @@ import { GithubGetData, SendData, getGithub, format } from '../../utils/githubDa
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let status = 400
   let data: GithubGetData | undefined
-  let formattedData: SendData | {} = {}
+  let formattedData: SendData | undefined
 
   if(typeof req.query.name === 'string'){
     data = await getGithub({login: req.query.name})
-    formattedData = await format(data)
-    status = 200
+    if(data.data.user){
+      formattedData = await format(data)
+      status = 200
+    }
   }
 
   res.setHeader("content-type", "application/json")
   res.status(status)
-  res.json(formattedData)
+
+  if(typeof formattedData === 'undefined'){
+    res.end()
+  }else{
+    res.json(formattedData)
+  }
 }

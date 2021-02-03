@@ -34,9 +34,12 @@ const useStyles = makeStyles((theme: Theme) =>{
         margin: '5rem 2rem 0 2rem',
       },
       '@media only screen and (max-device-width: 480px)': {
-        fontSize: '3.9rem',
-        lineHeight: '10rem',
-        margin: '2rem 1rem 0 1rem',
+        // fontSize: '3.9rem',
+        // lineHeight: '10rem',
+        // margin: '2rem 1rem 0 1rem',
+        fontSize: '15vw',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       },
     },
     totalContribution: {
@@ -234,7 +237,7 @@ function LanguagesGraph( { data, show }: {data: language[], show: boolean} ) {
 }
 
 
-export default function SkillsPage({  data }: { data: SendData }) {
+export default function SkillsPage({ data }: { data: SendData }) {
   const classes = useStyles()
   const { ref, inView, entry }= useInView({
     threshold: 0,
