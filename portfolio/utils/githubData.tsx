@@ -9,7 +9,7 @@ export interface SendData {
   isHalloween: boolean
 
   calendar: {
-    startIndex: number
+    monthIndex: number[]
     startMonth: number
     weeks: sendDataCalendar[]
   }
@@ -156,7 +156,7 @@ export async function getGithub(): Promise<GithubGetData | undefined> {
 export async function format(githubData: GithubGetData): Promise<SendData | undefined> {
   const weeks: sendDataCalendar[] = []
   let languages: language[] = []
-  let startIndex = 0
+  let monthIndex: number[] = []
   let startMonth = 1
   let alreadyStartIndex = false
 
@@ -171,10 +171,13 @@ export async function format(githubData: GithubGetData): Promise<SendData | unde
     // 2020-02-11 ->[2020, 02, 11]
     const date = week.firstDay.split('-').map((e) => parseInt(e))
 
-    if(!alreadyStartIndex && date[2] < 7){
-      startIndex = index
-      startMonth = date[1]
-      alreadyStartIndex = true
+    if(date[2] <= 7){
+      monthIndex.push(index)
+
+      if(!alreadyStartIndex){
+        startMonth = date[1]
+        alreadyStartIndex = true
+      }
     }
 
     week.contributionDays.forEach((day, _) => {
@@ -233,8 +236,8 @@ export async function format(githubData: GithubGetData): Promise<SendData | unde
     totalContributions: githubData.data.user.contributionsCollection.contributionCalendar.totalContributions,
     isHalloween: githubData.data.user.contributionsCollection.contributionCalendar.isHalloween,
     calendar: {
-      startIndex: startIndex,
       startMonth: startMonth -1,
+      monthIndex: monthIndex,
       weeks: weeks
     },
     languages: languages

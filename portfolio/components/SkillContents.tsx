@@ -157,26 +157,17 @@ const useStyles = makeStyles((theme: Theme) =>{
   })
 })
 
-function GrassGraph({ data, startIndex, startMonth }: { data: sendDataCalendar[], startIndex: number, startMonth: number }) {
+function GrassGraph({ data, monthIndex, startMonth }: { data: sendDataCalendar[], monthIndex: number[], startMonth: number }) {
   const classes = useStyles()
 
   const grassColor = [classes.grassNone, classes.grassLv1, classes.grassLv2, classes.grassLv3, classes.grassLv4]
-
   const monthName = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-  const monthNameWidth = [42, 42, 42, 55, 42, 55, 42, 42, 55, 42, 42 ,55]
-  let widthWeight = 0
 
+  // 微調整用 [1月, ..., 12月]
+  const monthWidth = [0, 0, 0, 0, 0, 0, 0, 0, 0, -4, -4 ,-4]
 
   const monthNameElement = Array(12).fill('').map((_, index) => {
-    let weight = 0
-
-    if(index !== 0){
-      weight = monthNameWidth[(startMonth+index)%12]+widthWeight+14
-    }else{
-      weight = 10 + (startIndex*13)
-    }
-
-    widthWeight = weight
+    const weight = monthIndex[index] * 14 + 10 + monthWidth[(startMonth+index)%12]
 
     return (
       <text x={weight} y="-7" className={classes.month} key={index}>{monthName[(startMonth+index)%12]}</text>
@@ -262,7 +253,7 @@ export default function SkillsPage({  data }: { data: SendData }) {
           </p>
         </div>
         <div className={classes.grass}>
-          <GrassGraph data={data.calendar.weeks} startIndex={data.calendar.startIndex}
+          <GrassGraph data={data.calendar.weeks} monthIndex={data.calendar.monthIndex}
                       startMonth={data.calendar.startMonth}/>
         </div>
       </div>
