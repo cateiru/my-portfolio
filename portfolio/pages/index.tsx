@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center',
     },
     nameEn: {
-      fontFamily: "'Open Sans Condensed', sans-serif",
+      fontWeight: 100,
       textAlign: 'center',
       marginBottom: '3rem'
     },
