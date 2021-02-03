@@ -329,7 +329,7 @@ class ContactForm extends React.Component<Props, State> {
       </Snackbar>
 
       <Backdrop open={this.state.sending} className={classes.backdrop} >
-        <CircularProgress color="inherit" />
+        <CircularProgress color="secondary" />
       </Backdrop>
       </form>
     )
