@@ -12,6 +12,8 @@ import SkillsPage from '../../components/SkillContents'
 import Backdrop from '@material-ui/core/Backdrop'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+import ReactTooltip from 'react-tooltip'
+import NoSsr from '@material-ui/core/NoSsr'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -47,14 +49,18 @@ export default function AnyUser({ setTheme, isTheme, name }: ThemeProps & InferG
   return (
     <div>
       <Page titleName="Skills" setTheme={setTheme} isTheme={isTheme} >
+        <NoSsr>
+          <ReactTooltip type={isTheme === 'dark'? 'light' : 'dark'} />
+        </NoSsr>
         <Snackbar open={isError} autoHideDuration={6000} onClose={() => setIsError(false)}>
           <MuiAlert elevation={6} variant="filled" onClose={() => setIsError(false)} severity="error">
             情報を取得できませんでした。<br />ユーザー名を確認してもう一度お試しください。
           </MuiAlert>
         </Snackbar>
         <Backdrop open={isLoad} className={classes.backdrop}>
-          <CircularProgress color="inherit" />
+          <CircularProgress color="secondary" />
         </Backdrop>
+
         <TryAnyUserForm text="他のGitHubアカウントで試す" initForm={name} />
         <div>
           {data? <SkillsPage data={data} /> : null}
