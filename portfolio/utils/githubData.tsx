@@ -74,8 +74,8 @@ export interface GithubGetData {
 }
 
 
-export async function github() {
-  const data = await getGithub()
+export async function github(userName: string) {
+  const data = await getGithub({login: userName})
   const formattedData = await format(data)
 
   return formattedData
@@ -98,11 +98,11 @@ export async function checkCache(): Promise<boolean> {
 /**
  * Github Graph QL api を使用してデータを取得
  */
-export async function getGithub(): Promise<GithubGetData | undefined> {
+export async function getGithub(variables: {login: string}): Promise<GithubGetData | undefined> {
   const data = {
     query: `
-    query {
-      user(login: "yuto51942") {
+    query($login: String!) {
+      user(login: $login) {
         contributionsCollection {
           contributionCalendar {
             isHalloween
@@ -134,7 +134,8 @@ export async function getGithub(): Promise<GithubGetData | undefined> {
         }
       }
     }
-    `
+    `,
+    variables,
   }
 
   try{

@@ -1,23 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { GithubGetData, SendData, checkCache, getGithub, format } from '../../utils/githubData'
-
-let cacheData: SendData | undefined
-
+import { GithubGetData, SendData, getGithub, format } from '../../utils/githubData'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let status = 400
   let data: GithubGetData | undefined
-  let formattedData: SendData | undefined
+  let formattedData: SendData | {} = {}
 
-  if (await checkCache() || typeof cacheData === 'undefined') {
-    data = await getGithub()
+  if(typeof req.query.name === 'string'){
+    data = await getGithub({login: req.query.name})
     formattedData = await format(data)
-
-    cacheData = formattedData
-    status = 200
-
-  }else {
-    formattedData = cacheData
     status = 200
   }
 
