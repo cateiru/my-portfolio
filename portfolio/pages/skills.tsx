@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: '5% 1rem 5% 1rem',
       fontFamily: "'M PLUS 1p', sans-serif",
 
-      background: '-webkit-linear-gradient(45deg, #6372f2, #62c5f0 20%, #a8f590 90%)',
-      '-webkit-background-clip': 'text',
-      '-webkit-text-fill-color': 'transparent',
-
       '& p': {
         display: 'inline-block',
+        background: '-webkit-linear-gradient(45deg, #6372f2, #62c5f0 20%, #a8f590 90%)',
+        '-webkit-background-clip': 'text',
+        '-webkit-text-fill-color': 'transparent',
+
         margin: '1rem 1rem 1rem 1rem'
       },
 
