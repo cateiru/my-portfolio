@@ -146,16 +146,24 @@ const useStyles = makeStyles((theme: Theme) =>{
       fill: isDark? '#303030' : '#f0f0f0'
     },
     grassLv1: {
-      fill: isDark? '#415254' : '#c7eef2'
+      fill: isDark? '#415254' : '#c7eef2',
+      stroke: isDark? '#3a494b' : '#cceff3',
+      strokeWidth: '1px',
     },
     grassLv2: {
-      fill: isDark? '#46747a' : '#97e7f0'
+      fill: isDark? '#46747a' : '#97e7f0',
+      stroke: isDark? '#3f686d' : '#a1e9f1',
+      strokeWidth: '1px',
     },
     grassLv3: {
-      fill: isDark? '#37a0ad' : '#61c4cf'
+      fill: isDark? '#37a0ad' : '#61c4cf',
+      stroke: isDark? '#31909b' : '#70c9d3',
+      strokeWidth: '1px',
     },
     grassLv4: {
-      fill: isDark? '#1cdfed' : '#27838c'
+      fill: isDark? '#1cdfed' : '#27838c',
+      stroke: isDark? '#19c8d5' : '#3c8f97',
+      strokeWidth: '1px',
     }
   })
 })
