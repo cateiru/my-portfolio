@@ -56,7 +56,7 @@ export default function TryAnyUserForm( { text, initForm, setIsLoad }: {text: st
         setIsLoad(true)
       }
 
-      router.replace(`/skills/user?name=${anyUserName}`)
+      router.replace(`/skills/user?name=${anyUserName}`).then(() => window.scrollTo(0, 0))
     }
   }, [isTryAnyUser])
 
