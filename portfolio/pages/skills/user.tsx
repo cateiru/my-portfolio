@@ -1,13 +1,11 @@
-import { useRouter } from 'next/router'
 import Page from '../../components/Page'
 import React from 'react'
 import ThemeProps from '../../utils/themeProps'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import TryAnyUserForm from '../../components/TryAnyUser'
-import { SendData } from '../../utils/githubData'
+import { SendData, github } from '../../utils/githubData'
 import Snackbar from '@material-ui/core/Snackbar'
 import MuiAlert from '@material-ui/lab/Alert'
-import axios from 'axios'
 import SkillsPage from '../../components/SkillContents'
 import Backdrop from '@material-ui/core/Backdrop'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -35,25 +33,17 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 
-export default function AnyUser({ setTheme, isTheme, name }: ThemeProps & InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function AnyUser({ setTheme, isTheme, name, data }: ThemeProps & InferGetServerSidePropsType<typeof getServerSideProps>) {
   const classes = useStyles()
   const [isError, setIsError] = React.useState(false)
-  const [data, setData] = React.useState<SendData | null>(null)
   const [isLoad, setIsLoad] = React.useState(false)
 
   React.useEffect(() => {
-    setIsLoad(true)
-
-    axios.get(`/api/github?name=${name}`)
-      .then((response) => {
-      setData(response.data as SendData)
-      setIsLoad(false)
-    }).catch((error) => {
-      setData(null)
+    if(!data){
       setIsError(true)
-      setIsLoad(false)
-    })
-  }, [name])
+    }
+    setIsLoad(false)
+  }, [data])
 
   return (
     <div>
@@ -70,7 +60,7 @@ export default function AnyUser({ setTheme, isTheme, name }: ThemeProps & InferG
           <CircularProgress color="secondary" />
         </Backdrop>
         <div className={classes.form}>
-          <TryAnyUserForm text="他のGitHubアカウントで試す" initForm={name} />
+          <TryAnyUserForm text="他のGitHubアカウントで試す" initForm={name} setIsLoad={setIsLoad} />
         </div>
         <div>
           {data? <SkillsPage data={data} /> : null}
@@ -81,9 +71,16 @@ export default function AnyUser({ setTheme, isTheme, name }: ThemeProps & InferG
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  let data: SendData | null = null
+
+  if(typeof context.query.name === 'string'){
+     data = await github(context.query.name)
+  }
+
   return {
     props: {
-      name: context.query.name
+      name: context.query.name,
+      data: data
     }
   }
 }

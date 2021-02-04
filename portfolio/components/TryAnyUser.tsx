@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export default function TryAnyUserForm( { text, initForm }: {text: string, initForm: string}) {
+export default function TryAnyUserForm( { text, initForm, setIsLoad }: {text: string, initForm: string, setIsLoad?: React.Dispatch<React.SetStateAction<boolean>>}) {
   const classes = useStyles()
   const router = useRouter()
   const [isTryAnyUser, setIsTryAnyUser] = React.useState(false)
@@ -51,6 +51,10 @@ export default function TryAnyUserForm( { text, initForm }: {text: string, initF
         return
       }
       setIsError(false)
+
+      if(setIsLoad){
+        setIsLoad(true)
+      }
 
       router.replace(`/skills/user?name=${anyUserName}`)
     }

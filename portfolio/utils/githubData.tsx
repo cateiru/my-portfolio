@@ -69,16 +69,19 @@ export interface GithubGetData {
           }
         }[]
       }
-    }
+    } | null
   }
 }
 
 
-export async function github(userName: string) {
+export async function github(userName: string): Promise<SendData|null> {
   const data = await getGithub({login: userName})
-  const formattedData = await format(data)
+  if(data.data.user){
+    const formattedData = await format(data)
 
-  return formattedData
+    return formattedData
+  }
+  return null
 }
 
 /**
@@ -154,7 +157,7 @@ export async function getGithub(variables: {login: string}): Promise<GithubGetDa
   }
 }
 
-export async function format(githubData: GithubGetData): Promise<SendData | undefined> {
+export async function format(githubData: GithubGetData): Promise<SendData | null> {
   const weeks: sendDataCalendar[] = []
   let languages: language[] = []
   let monthIndex: number[] = []
@@ -162,7 +165,7 @@ export async function format(githubData: GithubGetData): Promise<SendData | unde
   let alreadyStartIndex = false
 
   if(typeof githubData === 'undefined') {
-    return
+    return null
   }
 
   // 草グラフの整形
