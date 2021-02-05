@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button'
 import { useRouter } from 'next/router'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import React from 'react'
+import Backdrop from '@material-ui/core/Backdrop'
+import CircularProgress from '@material-ui/core/CircularProgress'
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,16 +35,20 @@ const useStyles = makeStyles((theme: Theme) =>
       '@media only screen and (max-device-width: 370px)': {
         ontSize: '1rem',
       },
-    }
+    },
+    backdrop: {
+      zIndex: 1400
+    },
   })
 )
 
-export default function TryAnyUserForm( { text, initForm, setIsLoad }: {text: string, initForm: string, setIsLoad?: React.Dispatch<React.SetStateAction<boolean>>}) {
+export default function TryAnyUserForm( { text, initForm, loadError }: {text: string, initForm: string, loadError: boolean}) {
   const classes = useStyles()
   const router = useRouter()
   const [isTryAnyUser, setIsTryAnyUser] = React.useState(false)
   const [anyUserName, setAnyUserName] = React.useState(initForm)
   const [isError, setIsError] = React.useState(false)
+  const [isLoad, setIsLoad] = React.useState(false)
 
   React.useEffect(() => {
     if(isTryAnyUser){
@@ -51,14 +58,21 @@ export default function TryAnyUserForm( { text, initForm, setIsLoad }: {text: st
         return
       }
       setIsError(false)
+      setIsLoad(true)
 
-      if(setIsLoad){
-        setIsLoad(true)
-      }
-
-      router.replace(`/skills/user?name=${anyUserName}`).then(() => window.scrollTo(0, 0))
+      router.replace(`/skills/user?name=${anyUserName}`).then(() => {
+        window.scrollTo(0, 0)
+        setIsLoad(false)
+      })
     }
   }, [isTryAnyUser])
+
+  React.useEffect(() => {
+    if(loadError){
+      setIsLoad(false)
+    }
+
+  }, [loadError])
 
   return (
     <div className={classes.root}>
@@ -73,6 +87,9 @@ export default function TryAnyUserForm( { text, initForm, setIsLoad }: {text: st
         error={isError}
         color='secondary' />
       <Button variant="contained" color='secondary' onClick={() => setIsTryAnyUser(true)}>Go!</Button>
+      <Backdrop open={isLoad} className={classes.backdrop}>
+          <CircularProgress color="secondary" />
+      </Backdrop>
     </div>
   )
 }

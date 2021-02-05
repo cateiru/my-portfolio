@@ -62,7 +62,7 @@ export default function Skills({ setTheme, isTheme, data }: ThemeProps & InferGe
         </div>
         <SkillsPage data={data as SendData} />
         <div className={classes.userTry}>
-          <TryAnyUserForm text='あなたのGitHubアカウントで試す' initForm='' />
+          <TryAnyUserForm text='あなたのGitHubアカウントで試す' initForm='' loadError={true} />
         </div>
       </Page>
     </div>

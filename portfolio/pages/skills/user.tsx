@@ -7,8 +7,6 @@ import { SendData, github } from '../../utils/githubData'
 import Snackbar from '@material-ui/core/Snackbar'
 import MuiAlert from '@material-ui/lab/Alert'
 import SkillsPage from '../../components/SkillContents'
-import Backdrop from '@material-ui/core/Backdrop'
-import CircularProgress from '@material-ui/core/CircularProgress'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import ReactTooltip from 'react-tooltip'
 import NoSsr from '@material-ui/core/NoSsr'
@@ -16,9 +14,6 @@ import NoSsr from '@material-ui/core/NoSsr'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    backdrop: {
-      zIndex: 1400
-    },
     form: {
       margin: '4rem 1rem 1rem 1rem',
 
@@ -36,13 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function AnyUser({ setTheme, isTheme, name, data }: ThemeProps & InferGetServerSidePropsType<typeof getServerSideProps>) {
   const classes = useStyles()
   const [isError, setIsError] = React.useState(false)
-  const [isLoad, setIsLoad] = React.useState(false)
 
   React.useEffect(() => {
     if(!data){
       setIsError(true)
     }
-    setIsLoad(false)
   }, [data])
 
   return (
@@ -56,11 +49,8 @@ export default function AnyUser({ setTheme, isTheme, name, data }: ThemeProps & 
             情報を取得できませんでした。<br />ユーザー名を確認してもう一度お試しください。
           </MuiAlert>
         </Snackbar>
-        <Backdrop open={isLoad} className={classes.backdrop}>
-          <CircularProgress color="secondary" />
-        </Backdrop>
         <div className={classes.form}>
-          <TryAnyUserForm text="他のGitHubアカウントで試す" initForm={name} setIsLoad={setIsLoad} />
+          <TryAnyUserForm text="他のGitHubアカウントで試す" initForm={name} loadError={isError} />
         </div>
         <div>
           {data? <SkillsPage data={data} /> : null}
