@@ -197,7 +197,7 @@ function GrassGraph({ data, monthIndex, startMonth }: { data: sendDataCalendar[]
             key={indexWeek}
             className={grassColor[valueWeek.contributionLevel]}
             rx={2}
-            data-tip={`${valueWeek.contributionCount} contributions on ${valueWeek.date}`}
+            data-tip={`${valueWeek.contributionCount} コントリビューション (${valueWeek.date})`}
         />
       )
     })

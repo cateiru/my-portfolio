@@ -42,7 +42,7 @@ export default function AnyUser({ setTheme, isTheme, name, data }: ThemeProps & 
     <div>
       <Page titleName="Skills" setTheme={setTheme} isTheme={isTheme} >
         <NoSsr>
-          <ReactTooltip type={isTheme === 'dark'? 'light' : 'dark'} />
+          <ReactTooltip type={isTheme === 'dark'? 'light' : 'dark'} effect='solid' />
         </NoSsr>
         <Snackbar open={isError} autoHideDuration={6000} onClose={() => setIsError(false)}>
           <MuiAlert elevation={6} variant="filled" onClose={() => setIsError(false)} severity="error">

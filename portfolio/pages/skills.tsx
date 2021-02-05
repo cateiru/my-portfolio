@@ -55,7 +55,7 @@ export default function Skills({ setTheme, isTheme, data }: ThemeProps & InferGe
     <div>
       <Page titleName="Skills" setTheme={setTheme} isTheme={isTheme} >
         <NoSsr>
-          <ReactTooltip type={isTheme === 'dark'? 'light' : 'dark'} />
+          <ReactTooltip type={isTheme === 'dark'? 'light' : 'dark'} effect='solid' />
         </NoSsr>
         <div className={classes.title}>
           <p>My GitHub</p>
