@@ -33,10 +33,10 @@ export default function AnyUser({ setTheme, isTheme, name, data }: ThemeProps & 
   const [isError, setIsError] = React.useState(false)
 
   React.useEffect(() => {
-    if(!data){
+    if(!data && name){
       setIsError(true)
     }
-  }, [data])
+  }, [data, name])
 
   return (
     <div>
@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      name: context.query.name,
+      name: context.query.name || null,
       data: data
     }
   }
