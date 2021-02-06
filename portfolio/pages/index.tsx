@@ -86,17 +86,17 @@ export default function About({ setTheme, isTheme }: ThemeProps) {
     <div>
       <Page titleName="About" setTheme={setTheme} isTheme={isTheme} >
         <MyAvatar />
-          <Box fontSize="h3.fontSize" className={classes.name}>
-            渡邊悠人
-          </Box>
-          <Box fontSize="h6.fontSize" className={classes.nameEn}>
-            Yuto Watanabe
-          </Box>
-          <CustomButton />
-          <Center className={classes.divider}>
-            <Divider />
-          </Center>
-          <TimelineHistory />
+        <Box fontSize="h3.fontSize" className={classes.name}>
+          渡邊悠人
+        </Box>
+        <Box fontSize="h6.fontSize" className={classes.nameEn}>
+          Yuto Watanabe
+        </Box>
+        <CustomButton />
+        <Center className={classes.divider}>
+          <Divider />
+        </Center>
+        <TimelineHistory />
       </Page>
     </div>
   )

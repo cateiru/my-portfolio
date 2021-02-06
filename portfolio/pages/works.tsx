@@ -24,7 +24,11 @@ interface _WorkJsonData {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      margin: '3rem .7rem 2rem .7rem',
+      margin: '3rem 5% 2rem 5%',
+
+      '@media only screen and (min-device-width: 1024px)': {
+        margin: '3rem 10% 2rem 10%'
+      }
     },
     guid: {
       lexBasis: 'auto',
@@ -45,15 +49,15 @@ function works(props: InferGetStaticPropsType<typeof getStaticProps> & ThemeProp
     <div>
       <Page titleName="Works" setTheme={props.setTheme as SetTheme} isTheme={props.isTheme as IsTheme} >
         <Box className={classes.root}>
-        <Grid container spacing={5} direction="row" justify="space-around" alignItems="flex-start" className={classes.guid} >
-          { works.map((element) => (
-            <Grid item xs="auto" key={`grid_${element.id}`} id={element.id}>
-              <WorksContents key={element.id} title={element.title} explanation={element.explanation}
-                tag={element.tag} imageSrc={element.imageSrc} projectPageLink={element.projectPageLink}
-                date={element.date} />
-            </Grid>
-          )).reverse() }
-        </Grid>
+          <Grid container spacing={5} direction="row" justify="space-around" alignItems="flex-start" className={classes.guid} >
+            { works.map((element) => (
+              <Grid item xs="auto" key={`grid_${element.id}`} id={element.id}>
+                <WorksContents key={element.id} title={element.title} explanation={element.explanation}
+                  tag={element.tag} imageSrc={element.imageSrc} projectPageLink={element.projectPageLink}
+                  date={element.date} />
+              </Grid>
+            )).reverse() }
+          </Grid>
         </Box>
       </Page>
     </div>
