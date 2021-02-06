@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       margin: '3rem .7rem 2rem .7rem',
+
+      '@media only screen and (min-device-width: 1024px)': {
+        margin: '3rem 10% 2rem 10%'
+      }
     },
     guid: {
       lexBasis: 'auto',
