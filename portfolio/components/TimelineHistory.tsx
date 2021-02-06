@@ -16,12 +16,16 @@ const styles = (theme: Theme) =>
   createStyles({
     timeline: {
       marginTop: '10rem',
-      marginBottom: '5rem',
+      marginBottom: '10rem',
       width: '100%',
       transform: 'scale(1.1)',
       boxSizing: 'border-box',
       '@media only screen and (max-device-width: 600px)': {
         transform: 'scale(1.0)',
+      },
+      '@media only screen and (max-device-width: 480px)': {
+        marginTop: '5rem',
+        marginBottom: '5rem',
       },
     },
     text: {

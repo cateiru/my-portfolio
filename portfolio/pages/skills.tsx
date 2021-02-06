@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     userTry: {
-      margin: '3rem 1rem 3rem 1rem',
+      margin: '3rem 1rem 4rem 1rem',
     }
   })
 )
