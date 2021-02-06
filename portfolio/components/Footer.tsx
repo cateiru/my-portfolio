@@ -5,10 +5,9 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     copyright: {
-      fontFamily: "'Open Sans Condensed', sans-serif",
       fontSize: 12,
-      textAlign: 'right',
-      margin: '1rem .5rem .5rem .5rem'
+      textAlign: 'center',
+      margin: '3rem .5rem 1rem .5rem'
     },
   }),
 )
