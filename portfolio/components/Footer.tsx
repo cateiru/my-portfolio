@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
       color: theme.palette.text.secondary
     },
     divider: {
+      marginTop: '5rem',
       width: '80%',
       backgroundColor: theme.palette.text.secondary
     }

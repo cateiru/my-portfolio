@@ -23,10 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center',
       marginBottom: '3rem'
     },
-    divider: {
-      width: '80%',
-      backgroundColor: theme.palette.text.secondary
-    }
   }),
 )
 
@@ -93,9 +89,6 @@ export default function About({ setTheme, isTheme }: ThemeProps) {
           Yuto Watanabe
         </Box>
         <CustomButton />
-        <Center className={classes.divider}>
-          <Divider />
-        </Center>
         <TimelineHistory />
       </Page>
     </div>
