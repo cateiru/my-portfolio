@@ -101,6 +101,9 @@ const useStyles = makeStyles((theme: Theme) =>
       '& .selected': {
         borderColor: `${theme.palette.secondary.main} !important`,
       },
+      '& li': {
+        backgroundColor: 'transparent !important',
+      },
       '& ul': {
         padding: '0',
       },

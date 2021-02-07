@@ -5,13 +5,19 @@
     "Python",
     "Selenium"
   ],
-  "imgSrc": [],
+  "imgSrc": [
+    "/works/classNotify.png"
+  ],
   "links": [
     {
       "host": "github",
       "url": "https://github.com/yuto51942/class-cancellation-monitoring"
     }
   ],
-  "text": [],
+  "text": [
+    "## どういうもの？",
+    "Seleniumを用いて大学のポータルサイトUNIPAにログインし、休講・補講情報をスクレイピングしてSlackに通知する。",
+    "(本当は大学側がスマホアプリを開発してプッシュ通知機能をつけてくれたら解決なのだがまあ、絶対やらないだろうなぁ…)"
+  ],
   "date": "2019年 12月"
 }
