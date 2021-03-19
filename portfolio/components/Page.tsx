@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
     body: {
       display: 'flex',
       flexFlow: 'column',
-      minHeight: '100vh',
+      minHeight: '150vh',
     },
     main: {
       flex: 1
