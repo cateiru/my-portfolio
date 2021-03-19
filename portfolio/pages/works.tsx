@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: '3rem 5% 2rem 5%',
 
       '@media only screen and (min-device-width: 1024px)': {
-        margin: '3rem 10% 2rem 10%'
+        margin: '3rem 8% 2rem 8%'
       }
     },
     guid: {
