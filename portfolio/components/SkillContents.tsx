@@ -143,26 +143,26 @@ const useStyles = makeStyles((theme: Theme) =>{
       }
     },
     grassNone: {
-      fill: isDark? '#303030' : '#f0f0f0'
+      fill: isDark? '#1e2638' : '#f0f0f0'
     },
     grassLv1: {
-      fill: isDark? '#415254' : '#c7eef2',
-      stroke: isDark? '#3a494b' : '#cceff3',
+      fill: isDark? '#243763' : '#c7eef2',
+      stroke: isDark? '#253d72' : '#cceff3',
       strokeWidth: '1px',
     },
     grassLv2: {
-      fill: isDark? '#46747a' : '#97e7f0',
-      stroke: isDark? '#3f686d' : '#a1e9f1',
+      fill: isDark? '#2a4990' : '#97e7f0',
+      stroke: isDark? '#2d4f9f' : '#a1e9f1',
       strokeWidth: '1px',
     },
     grassLv3: {
-      fill: isDark? '#37a0ad' : '#61c4cf',
-      stroke: isDark? '#31909b' : '#70c9d3',
+      fill: isDark? '#365abe' : '#61c4cf',
+      stroke: isDark? '#3d5fce' : '#70c9d3',
       strokeWidth: '1px',
     },
     grassLv4: {
-      fill: isDark? '#1cdfed' : '#27838c',
-      stroke: isDark? '#19c8d5' : '#3c8f97',
+      fill: isDark? '#5a7ef2' : '#27838c',
+      stroke: isDark? '#5a7ef2' : '#3c8f97',
       strokeWidth: '1px',
     }
   })
