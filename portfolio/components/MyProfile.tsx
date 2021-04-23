@@ -45,7 +45,7 @@ class MyAvatar extends React.Component<Props, State> {
     return (
     <Center>
       <Avatar alt="Yuto Watanabe" onClick={this.avatarChange} className={classes.icon} >
-        <Image src={this.state.changeAvatar ? "/myIcon1.png" : "/myIcon2.png"} alt="Yuto Watanabe's avatar" width={500} height={500} />
+        <Image src="/myIcon.png" alt="Yuto Watanabe's avatar" width={500} height={500} />
       </Avatar>
     </Center>
     )
