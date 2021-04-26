@@ -1,0 +1,31 @@
+{
+  "title": "TDU Logcation",
+  "explanation": "着席確認アプリ",
+  "tag": [
+    "TypeScript",
+    "Next.js",
+    "chakra UI",
+    "Recoil.js",
+    "PWA"
+  ],
+  "imgSrc": [
+    "/works/Logcation_logo.svg"
+  ],
+  "links": [
+    {
+      "host": "github",
+      "url": "https://github.com/tdu-logcation/web"
+    },
+    {
+      "host": "ベータ版ページ",
+      "url": "https://test-log.tdu.app"
+    }
+  ],
+  "text": [
+    "## どういうもの？",
+    "大学製の着座履歴記録アプリ「リレキログ」のUIがあまり良くなく使っている人がほとんどいない状態だったため、学部1年の方と一緒に作成した。現在作成中である。",
+    "## 機能など",
+    "PWAを採用することで、AppStoreやPlayStoreからのダウンロードの必要はなくお使いのブラウザから簡単に始めることができる。また、保存データはすべてローカルストレージに保存することでセキュリティ面に配慮。わかりやすいUIを使用したアプリとなっている。"
+  ],
+  "date": "2021年 4月"
+}
