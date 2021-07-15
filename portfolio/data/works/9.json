@@ -1,0 +1,31 @@
+{
+    "title": "Hello Slide",
+    "explanation": "視聴者も参加できる進化したスライド",
+    "tag": [
+        "TypeScript",
+        "Next.js",
+        "React",
+        "Go",
+        "Kubernetes",
+        "Dapr",
+        "GKE",
+        "GAP"
+    ],
+    "imgSrc": [
+        "/works/hello-slide.png"
+    ],
+    "links": [
+        {
+            "host": "github",
+            "url": "https://github.com/hello-slide"
+        },
+        {
+            "host": "Googleスライド",
+            "url": "https://docs.google.com/presentation/d/1Y5oW5ak4zRhHO15UEEkBYhbij2fxTwS9iv2ICJcY9WM/edit?usp=sharing"
+        }
+    ],
+    "text": [
+        "Coming soon..."
+    ],
+    "date": "2021年 7月"
+}
