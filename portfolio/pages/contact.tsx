@@ -3,6 +3,7 @@ import Box from '@material-ui/core/Box'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import ContactForm from '../components/ContactForm'
 import ThemeProps from '../utils/themeProps'
+import {GetServerSideProps, InferGetServerSidePropsType} from 'next';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export default function Contact({ setTheme, isTheme }: ThemeProps) {
+export default function Contact({ setTheme, isTheme, title }: ThemeProps & InferGetServerSidePropsType<typeof getServerSideProps>) {
   const classes = useStyles()
   return (
     <div>
@@ -24,8 +25,18 @@ export default function Contact({ setTheme, isTheme }: ThemeProps) {
         <Box className={classes.title}>
           お問い合わせ
         </Box>
-        <ContactForm />
+        <ContactForm title={title} />
       </Page>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const title = context.query.title || ''
+
+    return {
+        props: {
+            title: title
+        }
+    }
 }

@@ -76,7 +76,9 @@ const styles = (theme: Theme) =>
     }
 })
 
-interface Props extends WithStyles<typeof styles> { }
+interface Props extends WithStyles<typeof styles> {
+    title: string
+ }
 
 class ContactForm extends React.Component<Props, State> {
 
@@ -85,7 +87,7 @@ class ContactForm extends React.Component<Props, State> {
 
     this.state = {
       mailAddress: '',
-      title: '',
+      title: props.title,
       text: '',
       name: '',
       mailIsError: false,
