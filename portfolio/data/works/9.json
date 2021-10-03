@@ -9,7 +9,13 @@
         "Kubernetes",
         "Dapr",
         "GKE",
-        "GAE"
+        "GAE",
+        "Google Cloud Datastore",
+        "Redis",
+        "PostgreSQL",
+        "Google Cloud SQL",
+        "Google Cloud Storage",
+        "Websocket"
     ],
     "imgSrc": [
         "/works/hello-slide.png"
@@ -20,12 +26,19 @@
             "url": "https://github.com/hello-slide"
         },
         {
-            "host": "Googleスライド",
-            "url": "https://docs.google.com/presentation/d/1Y5oW5ak4zRhHO15UEEkBYhbij2fxTwS9iv2ICJcY9WM/edit?usp=sharing"
+            "host": "ページ",
+            "url": "https://hello-slide.jp"
         }
     ],
     "text": [
-        "Coming soon..."
+        "## どういうもの？",
+        "視聴者が参加することができるスライドショー。スライドに表示されるQRコードを読み取ることでクイズや質問に答えることができます。",
+        "## 頑張ったこと",
+        "Hello slideのバックエンドはDaprを使用したマイクロサービスとなっており、それぞれのAppはGoで実装されてk8s上にデプロイされています。実はDaprもGoもk8sも初めて触るもので手探りの状態からだったのでものすごく苦労しました。",
+        "結果として、サービスをリリースできるだけでなく、Goやk8s、DaprやOAuthについても知見を得ることができたので大変満足でした。",
+        "## 今後の展望",
+        "今後はGoogle slideやPowerPointのようなテキストや画像、図形によるスライドの編集などを可能にし、よりサービス名に近くなるようにしたいと思っています。",
+        "（使ってくれると喜びます！）"
     ],
     "date": "2021年 7月"
 }
