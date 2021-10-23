@@ -151,7 +151,7 @@ export async function getGithub(variables: {login: string}): Promise<GithubGetDa
       }
     })
 
-    return response.data
+    return response.data as GithubGetData
   }catch(error) {
     throw new Error(error)
   }
