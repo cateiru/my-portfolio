@@ -2,7 +2,7 @@
 <h3  align="center">YutoWatanabe's portfolio</h3>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yuto51942/my-portfolio/main/portfolio/public/works/portfolio.png" />
+  <img src="https://raw.githubusercontent.com/cateiru/my-portfolio/main/portfolio/public/works/portfolio.png" />
 </p>
 
 ## Build

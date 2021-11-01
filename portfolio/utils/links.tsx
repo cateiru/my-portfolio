@@ -24,7 +24,7 @@ export const linkContents: LinkContents[] = [
   },
   {
     name: 'GitHub',
-    link: 'https://github.com/yuto51942',
+    link: 'https://github.com/cateiru',
     icon: <GitHubIcon />,
     onCursorColorLight: '#161c23',
     onCursorColorDark: '#f0f6fb',

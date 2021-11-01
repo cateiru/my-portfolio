@@ -159,7 +159,7 @@ function ElevateAppBar(props: Props) {
               <Typography variant="h6" className={classes.title}>
                 {props.titleName}
               </Typography>
-            <a href="https://github.com/yuto51942/my-portfolio" target="_blank" rel="noopener noreferrer" className={classes.githubLink}>
+            <a href="https://github.com/cateiru/my-portfolio" target="_blank" rel="noopener noreferrer" className={classes.githubLink}>
               <Tooltip title="プロジェクトページに移動" >
                 <IconButton aria-label="jump github page">
                   <GitHubIcon />

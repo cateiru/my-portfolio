@@ -1,20 +1,20 @@
 {
-  "title": "QMアルゴリズム",
-  "explanation": "QM法の実装",
-  "tag": [
-    "TypeScript"
-  ],
-  "imgSrc": [],
-  "links": [
-    {
-      "host": "github",
-      "url": "https://github.com/yuto51942/qm-algorithm"
-    }
-  ],
-  "text": [
-    "## どういうもの？",
-    "論理回路の講義でQM法について教わり「絶対実装したら楽しそうやん」とかいう理由でTypescriptで実装したやつ。",
-    "一応、講義の試験対策で役に立った！！"
-  ],
-  "date": "2020年 12月"
+    "title": "QMアルゴリズム",
+    "explanation": "QM法の実装",
+    "tag": [
+        "TypeScript"
+    ],
+    "imgSrc": [],
+    "links": [
+        {
+            "host": "github",
+            "url": "https://github.com/cateiru/qm-algorithm"
+        }
+    ],
+    "text": [
+        "## どういうもの？",
+        "論理回路の講義でQM法について教わり「絶対実装したら楽しそうやん」とかいう理由でTypescriptで実装したやつ。",
+        "一応、講義の試験対策で役に立った！！"
+    ],
+    "date": "2020年 12月"
 }

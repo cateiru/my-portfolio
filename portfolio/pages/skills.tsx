@@ -72,7 +72,7 @@ export default function Skills({ setTheme, isTheme, data }: ThemeProps & InferGe
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const data = await github('yuto51942')
+  const data = await github('cateiru')
 
   return {
     props: {

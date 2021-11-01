@@ -1,23 +1,23 @@
 {
-  "title": "Class Cancellation Monitoring",
-  "explanation": "東京電機大学のポータルサイトであるUNIPAは通知機能がなく重要な連絡を見落とすことがあった。そのため、Seleniumを使用して定期的に新着連絡を取得するシステムを作成。",
-  "tag": [
-    "Python",
-    "Selenium"
-  ],
-  "imgSrc": [
-    "/works/classNotify.png"
-  ],
-  "links": [
-    {
-      "host": "github",
-      "url": "https://github.com/yuto51942/class-cancellation-monitoring"
-    }
-  ],
-  "text": [
-    "## どういうもの？",
-    "Seleniumを用いて大学のポータルサイトUNIPAにログインし、休講・補講情報をスクレイピングしてSlackに通知する。",
-    "(本当は大学側がスマホアプリを開発してプッシュ通知機能をつけてくれたら解決なのだがまあ、絶対やらないだろうなぁ…)"
-  ],
-  "date": "2019年 12月"
+    "title": "Class Cancellation Monitoring",
+    "explanation": "東京電機大学のポータルサイトであるUNIPAは通知機能がなく重要な連絡を見落とすことがあった。そのため、Seleniumを使用して定期的に新着連絡を取得するシステムを作成。",
+    "tag": [
+        "Python",
+        "Selenium"
+    ],
+    "imgSrc": [
+        "/works/classNotify.png"
+    ],
+    "links": [
+        {
+            "host": "github",
+            "url": "https://github.com/cateiru/class-cancellation-monitoring"
+        }
+    ],
+    "text": [
+        "## どういうもの？",
+        "Seleniumを用いて大学のポータルサイトUNIPAにログインし、休講・補講情報をスクレイピングしてSlackに通知する。",
+        "(本当は大学側がスマホアプリを開発してプッシュ通知機能をつけてくれたら解決なのだがまあ、絶対やらないだろうなぁ…)"
+    ],
+    "date": "2019年 12月"
 }

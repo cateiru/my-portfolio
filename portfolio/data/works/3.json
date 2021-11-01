@@ -1,31 +1,31 @@
 {
-  "title": "TDUメーカー",
-  "explanation": "「東京電機大学」の文字をランダムで表示する。",
-  "tag": [
-    "TypeScript",
-    "React",
-    "Vercel"
-  ],
-  "imgSrc": [
-    "/works/TDU.png"
-  ],
-  "links": [
-    {
-      "host": "github",
-      "url": "https://github.com/yuto51942/tokyo-denki-univ"
-    },
-    {
-      "host": "Webサイト",
-      "url": "https://tokyo-denki-univ.vercel.app/"
-    }
-  ],
-  "text": [
-    "## どういうもの？",
-    "「東京電機大学」の文字をランダムで表示する。",
-    "React始めたてのころ、なにかページを作ってみたいなと思って作ったもの。",
-    "当時、Twitterで「東京電機大学」をランダムにしてツイートするBotが流行っておりその流れに乗りたかった。",
-    "",
-    "実は、変換する文字は書き換えることが可能であり、「東京大学」にしてもばれないんじゃないかな？"
-  ],
-  "date": "2020年 12月"
+    "title": "TDUメーカー",
+    "explanation": "「東京電機大学」の文字をランダムで表示する。",
+    "tag": [
+        "TypeScript",
+        "React",
+        "Vercel"
+    ],
+    "imgSrc": [
+        "/works/TDU.png"
+    ],
+    "links": [
+        {
+            "host": "github",
+            "url": "https://github.com/cateiru/tokyo-denki-univ"
+        },
+        {
+            "host": "Webサイト",
+            "url": "https://tokyo-denki-univ.vercel.app/"
+        }
+    ],
+    "text": [
+        "## どういうもの？",
+        "「東京電機大学」の文字をランダムで表示する。",
+        "React始めたてのころ、なにかページを作ってみたいなと思って作ったもの。",
+        "当時、Twitterで「東京電機大学」をランダムにしてツイートするBotが流行っておりその流れに乗りたかった。",
+        "",
+        "実は、変換する文字は書き換えることが可能であり、「東京大学」にしてもばれないんじゃないかな？"
+    ],
+    "date": "2020年 12月"
 }
