@@ -23,8 +23,13 @@ export const timelineElement: Timeline[] = [
     date: '2019/04 - (2023/04)'
   },
   {
-    text: <React.Fragment><span>都内AI開発企業</span>にてインターン</React.Fragment>,
+    text: <React.Fragment>インターン1</React.Fragment>,
     icon: <ApartmentIcon />,
     date: '2019/07 - 2021/06'
+  },
+  {
+    text: <React.Fragment>インターン2</React.Fragment>,
+    icon: <ApartmentIcon />,
+    date: '2021/11 -'
   }
 ]
